@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		160580062224EEAC00382692 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160580052224EEAC00382692 /* HistoryViewController.swift */; };
 		3F4344442221F953008A04EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4344432221F953008A04EF /* AppDelegate.swift */; };
 		3F4344462221F953008A04EF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4344452221F953008A04EF /* FirstViewController.swift */; };
 		3F4344482221F953008A04EF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4344472221F953008A04EF /* SecondViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		160580052224EEAC00382692 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		3F4344402221F952008A04EF /* Just Quizzing....app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Just Quizzing....app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F4344432221F953008A04EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F4344452221F953008A04EF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				3F43444C2221F958008A04EF /* Assets.xcassets */,
 				3F43444E2221F958008A04EF /* LaunchScreen.storyboard */,
 				3F4344512221F958008A04EF /* Info.plist */,
+				160580052224EEAC00382692 /* HistoryViewController.swift */,
 			);
 			path = "Just Quizzing...";
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				3F4344482221F953008A04EF /* SecondViewController.swift in Sources */,
 				3F4344442221F953008A04EF /* AppDelegate.swift in Sources */,
+				160580062224EEAC00382692 /* HistoryViewController.swift in Sources */,
 				3F4344462221F953008A04EF /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
