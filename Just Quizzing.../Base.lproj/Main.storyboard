@@ -32,14 +32,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KdF-HH-pYm">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="hyndavi" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KdF-HH-pYm">
                                 <rect key="frame" x="236" y="146" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b46-Sj-use">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="qwerty" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b46-Sj-use">
                                 <rect key="frame" x="236" y="219" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -248,7 +248,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="Yj9-Qt-iYo"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="icons8-home-page-64" selectedImage="icons8-home-page-64" id="Yj9-Qt-iYo"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -338,7 +338,7 @@
             </objects>
             <point key="canvasLocation" x="2572" y="-878.41079460269873"/>
         </scene>
-        <!--Leaderboard-->
+        <!--leaderboard-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Just_Quizzing___" customModuleProvider="target" sceneMemberID="viewController">
@@ -417,7 +417,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Leaderboard" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="leaderboard" image="icons8-leaderboard-filled-50" selectedImage="icons8-leaderboard-filled-50" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -489,7 +489,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="0hK-XE-0Ye"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="first" landscapeImage="first" selectedImage="first" id="0n2-j7-vgV">
+                    <tabBarItem key="tabBarItem" title="Profile" image="icons8-user-64" selectedImage="icons8-user-64" id="0n2-j7-vgV">
                         <inset key="landscapeImageInsets" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
@@ -518,7 +518,7 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--History-->
+        <!--history-->
         <scene sceneID="yAg-qv-R2e">
             <objects>
                 <viewController id="5U2-ah-TM2" customClass="HistoryViewController" customModule="Just_Quizzing___" customModuleProvider="target" sceneMemberID="viewController">
@@ -597,7 +597,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DAq-gS-ygh"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="History" image="second" id="la3-xP-PkS"/>
+                    <tabBarItem key="tabBarItem" title="history" image="icons8-time-machine-64" selectedImage="icons8-time-machine-64" id="la3-xP-PkS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RUX-JY-UNy" sceneMemberID="firstResponder"/>
             </objects>
@@ -605,10 +605,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="icons8-home-page-64" width="32" height="32"/>
+        <image name="icons8-leaderboard-filled-50" width="50" height="50"/>
+        <image name="icons8-time-machine-64" width="21" height="21"/>
+        <image name="icons8-user-64" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WCS-c8-JdZ"/>
+        <segue reference="nRc-Gu-aNv"/>
     </inferredMetricsTieBreakers>
 </document>
