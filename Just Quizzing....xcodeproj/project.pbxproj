@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		160580062224EEAC00382692 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160580052224EEAC00382692 /* HistoryViewController.swift */; };
+		3F418622223386340000DF3B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F418621223386340000DF3B /* LoginViewController.swift */; };
+		3F4186242233866B0000DF3B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4186232233866B0000DF3B /* SignUpViewController.swift */; };
 		3F4344442221F953008A04EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4344432221F953008A04EF /* AppDelegate.swift */; };
 		3F4344462221F953008A04EF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4344452221F953008A04EF /* FirstViewController.swift */; };
 		3F4344482221F953008A04EF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4344472221F953008A04EF /* SecondViewController.swift */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		160580052224EEAC00382692 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		3F418621223386340000DF3B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3F4186232233866B0000DF3B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3F4344402221F952008A04EF /* Just Quizzing....app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Just Quizzing....app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F4344432221F953008A04EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F4344452221F953008A04EF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				3F43444E2221F958008A04EF /* LaunchScreen.storyboard */,
 				3F4344512221F958008A04EF /* Info.plist */,
 				160580052224EEAC00382692 /* HistoryViewController.swift */,
+				3F418621223386340000DF3B /* LoginViewController.swift */,
+				3F4186232233866B0000DF3B /* SignUpViewController.swift */,
 			);
 			path = "Just Quizzing...";
 			sourceTree = "<group>";
@@ -262,9 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F4186242233866B0000DF3B /* SignUpViewController.swift in Sources */,
 				3F4344482221F953008A04EF /* SecondViewController.swift in Sources */,
 				3F4344442221F953008A04EF /* AppDelegate.swift in Sources */,
 				160580062224EEAC00382692 /* HistoryViewController.swift in Sources */,
+				3F418622223386340000DF3B /* LoginViewController.swift in Sources */,
 				3F4344462221F953008A04EF /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
