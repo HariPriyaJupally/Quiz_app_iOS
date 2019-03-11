@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class LeaderboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var players = ["Hari Priya", "Hyndavi", "Sai Ram", "Indra"]
     var ranks = [1,2,3,4]
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

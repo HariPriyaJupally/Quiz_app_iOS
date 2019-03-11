@@ -12,7 +12,7 @@
 		3F4186242233866B0000DF3B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4186232233866B0000DF3B /* SignUpViewController.swift */; };
 		3F4344442221F953008A04EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4344432221F953008A04EF /* AppDelegate.swift */; };
 		3F4344462221F953008A04EF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4344452221F953008A04EF /* FirstViewController.swift */; };
-		3F4344482221F953008A04EF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4344472221F953008A04EF /* SecondViewController.swift */; };
+		3F4344482221F953008A04EF /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4344472221F953008A04EF /* LeaderboardViewController.swift */; };
 		3F43444B2221F953008A04EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4344492221F953008A04EF /* Main.storyboard */; };
 		3F43444D2221F958008A04EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F43444C2221F958008A04EF /* Assets.xcassets */; };
 		3F4344502221F958008A04EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F43444E2221F958008A04EF /* LaunchScreen.storyboard */; };
@@ -45,7 +45,7 @@
 		3F4344402221F952008A04EF /* Just Quizzing....app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Just Quizzing....app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F4344432221F953008A04EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F4344452221F953008A04EF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		3F4344472221F953008A04EF /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		3F4344472221F953008A04EF /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		3F43444A2221F953008A04EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F43444C2221F958008A04EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F43444F2221F958008A04EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 			children = (
 				3F4344432221F953008A04EF /* AppDelegate.swift */,
 				3F4344452221F953008A04EF /* FirstViewController.swift */,
-				3F4344472221F953008A04EF /* SecondViewController.swift */,
+				3F4344472221F953008A04EF /* LeaderboardViewController.swift */,
 				3F4344492221F953008A04EF /* Main.storyboard */,
 				3F43444C2221F958008A04EF /* Assets.xcassets */,
 				3F43444E2221F958008A04EF /* LaunchScreen.storyboard */,
@@ -273,7 +273,7 @@
 			files = (
 				3F4186242233866B0000DF3B /* SignUpViewController.swift in Sources */,
 				3FB7F2C822371427001E9765 /* QuizViewController.swift in Sources */,
-				3F4344482221F953008A04EF /* SecondViewController.swift in Sources */,
+				3F4344482221F953008A04EF /* LeaderboardViewController.swift in Sources */,
 				3F4344442221F953008A04EF /* AppDelegate.swift in Sources */,
 				160580062224EEAC00382692 /* HistoryViewController.swift in Sources */,
 				3F418622223386340000DF3B /* LoginViewController.swift in Sources */,
