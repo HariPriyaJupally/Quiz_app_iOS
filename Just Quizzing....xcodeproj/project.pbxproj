@@ -18,6 +18,7 @@
 		3F4344502221F958008A04EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F43444E2221F958008A04EF /* LaunchScreen.storyboard */; };
 		3F43445B2221F958008A04EF /* Just_Quizzing___Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F43445A2221F958008A04EF /* Just_Quizzing___Tests.swift */; };
 		3F4344662221F958008A04EF /* Just_Quizzing___UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4344652221F958008A04EF /* Just_Quizzing___UITests.swift */; };
+		3FB7F2C822371427001E9765 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB7F2C722371427001E9765 /* QuizViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		3F4344612221F958008A04EF /* Just Quizzing...UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Just Quizzing...UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F4344652221F958008A04EF /* Just_Quizzing___UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Just_Quizzing___UITests.swift"; sourceTree = "<group>"; };
 		3F4344672221F958008A04EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FB7F2C722371427001E9765 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				160580052224EEAC00382692 /* HistoryViewController.swift */,
 				3F418621223386340000DF3B /* LoginViewController.swift */,
 				3F4186232233866B0000DF3B /* SignUpViewController.swift */,
+				3FB7F2C722371427001E9765 /* QuizViewController.swift */,
 			);
 			path = "Just Quizzing...";
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F4186242233866B0000DF3B /* SignUpViewController.swift in Sources */,
+				3FB7F2C822371427001E9765 /* QuizViewController.swift in Sources */,
 				3F4344482221F953008A04EF /* SecondViewController.swift in Sources */,
 				3F4344442221F953008A04EF /* AppDelegate.swift in Sources */,
 				160580062224EEAC00382692 /* HistoryViewController.swift in Sources */,
