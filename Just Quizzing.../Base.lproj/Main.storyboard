@@ -354,10 +354,10 @@
             </objects>
             <point key="canvasLocation" x="1908" y="-849.62518740629696"/>
         </scene>
-        <!--View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="D60-ja-OoD">
             <objects>
-                <viewController id="A3t-27-cSc" sceneMemberID="viewController">
+                <viewController id="A3t-27-cSc" customClass="ResultViewController" customModule="Just_Quizzing___" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cIg-oe-KMe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -659,7 +659,7 @@
         <image name="icons8-user-64" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nRc-Gu-aNv"/>
+        <segue reference="WCS-c8-JdZ"/>
         <segue reference="o6d-Hi-rw6"/>
     </inferredMetricsTieBreakers>
 </document>
