@@ -55,28 +55,7 @@ class SignUpViewController: UIViewController {
             
         } else {
             displayAfterRegistered(msg: "Registered new user")
-//            let userBackend = BackendlessUser()
-//            userBackend.setProperties(["name": fullNameTF.text!, "email": emailIdTF.text! ,"password": passwordTF.text!, "mobile": mobileNumberTF.text!])
-//
-//            let backendless  =  Backendless.sharedInstance()
-//            backendless!.userService.register(userBackend,
-//                                              response: {
-//                                                (registeredUser : BackendlessUser?) -> Void in
-//
-//
-//                                                self.displayAfterRegistered(msg: "User registered.\n For email:  \(self.emailIdTF.text!)\n Verify your email before Log-in" )
-//                                                //for debugging
-//                                                print("User registered.\n For email:  \(self.emailIdTF.text!)" )
-//
-//
-//            },
-//                                              error: {
-//                                                (fault : Fault?) -> Void in
-//                                                self.displayAlert(msg: (fault?.message)!)
-//
-//                                                //for debugging
-//                                                print("Server reported an error: \(String(describing: fault?.description))")
-//            })
+
         }
     }
 }

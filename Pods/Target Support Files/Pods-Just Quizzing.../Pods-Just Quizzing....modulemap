@@ -1,0 +1,6 @@
+framework module Pods_Just_Quizzing___ {
+  umbrella header "Pods-Just Quizzing...-umbrella.h"
+
+  export *
+  module * { export * }
+}
