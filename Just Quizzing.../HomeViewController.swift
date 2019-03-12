@@ -8,8 +8,10 @@
 
 import UIKit
 
-class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource , UITextFieldDelegate{
      //test commit
+    
+    @IBOutlet weak var NumQATF: UITextField!
     
     @IBOutlet weak var pickerDifficulty: UIPickerView!
     
@@ -20,8 +22,9 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     var pickerTypeContents: [String] = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        NumQATF.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
-        self.view.backgroundColor = #colorLiteral(red: 0.9683927796, green: 0.8877285699, blue: 0.9686274529, alpha: 1)
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "blue-quiz-background-with-light-bulb-pencils_23-2147598504.jpg")!)
         
         self.pickerDifficulty.delegate = self
         self.pickerDifficulty.dataSource = self
@@ -35,6 +38,15 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         pickerTypeContents = ["Multiple Choice", "True or False", "Both"]
         
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
+        let compSepByCharInSet = string.components(separatedBy: aSet)
+        let numberFiltered = compSepByCharInSet.joined(separator: "")
+        return string == numberFiltered
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -54,6 +66,11 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         }
     }
 
-
+    @IBAction func submitBTN(_ sender: Any) {
+        if Int(NumQATF.text!) != nil {
+            print("Blah blah")
+        }
+    }
+    
 }
 
