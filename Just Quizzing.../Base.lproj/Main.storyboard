@@ -761,10 +761,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icons8-home-page-64" width="32" height="32"/>
-        <image name="icons8-leaderboard-filled-50" width="50" height="50"/>
-        <image name="icons8-time-machine-64" width="21" height="21"/>
-        <image name="icons8-user-64" width="32" height="32"/>
+        <image name="icons8-home-page-64" width="48" height="48"/>
+        <image name="icons8-leaderboard-filled-50" width="37.5" height="37.5"/>
+        <image name="icons8-time-machine-64" width="48" height="48"/>
+        <image name="icons8-user-64" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="OKR-SW-2xt"/>

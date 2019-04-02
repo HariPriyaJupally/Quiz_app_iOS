@@ -26,6 +26,23 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         NumQATF.delegate = self
+        let backgroundImage = UIImage(named: "mzl.ulplplbr.png")
+        
+        var imageView: UIImageView!
+        
+        imageView = UIImageView(frame: view.bounds)
+        
+        imageView.contentMode = .scaleAspectFill
+        
+        imageView.clipsToBounds = true
+        
+        imageView.image = backgroundImage
+        
+        imageView.center = view.center
+        
+        view.addSubview(imageView)
+        
+        self.view.sendSubviewToBack(imageView)
         // Do any additional setup after loading the view, typically from a nib.
 //        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "blue-quiz-background-with-light-bulb-pencils_23-2147598504.jpg")!)
         

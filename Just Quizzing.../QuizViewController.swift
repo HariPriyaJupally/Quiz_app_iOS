@@ -31,6 +31,24 @@ class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let url = URL(string: apiURL)!
         urlSession.dataTask(with: url, completionHandler: showData).resume()
         // Do any additional setup after loading the view.
+        
+        let backgroundImage = UIImage(named: "mzl.ulplplbr.png")
+        
+        var imageView: UIImageView!
+        
+        imageView = UIImageView(frame: view.bounds)
+        
+        imageView.contentMode = .scaleAspectFill
+        
+        imageView.clipsToBounds = true
+        
+        imageView.image = backgroundImage
+        
+        imageView.center = view.center
+        
+        view.addSubview(imageView)
+        
+        self.view.sendSubviewToBack(imageView)
     }
     
     func showData(data:Data?, urlResponse:URLResponse?, error:Error?){

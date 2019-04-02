@@ -21,6 +21,24 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         // self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.jpeg")!)
         // Do any additional setup after loading the view.
+       
+        let backgroundImage = UIImage(named: "mzl.ulplplbr.png")
+        
+        var imageView: UIImageView!
+        
+        imageView = UIImageView(frame: view.bounds)
+        
+        imageView.contentMode = .scaleAspectFill
+        
+        imageView.clipsToBounds = true
+        
+        imageView.image = backgroundImage
+        
+        imageView.center = view.center
+        
+        view.addSubview(imageView)
+        
+        self.view.sendSubviewToBack(imageView)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
