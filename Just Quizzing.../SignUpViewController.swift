@@ -22,7 +22,7 @@ class SignUpViewController: UIViewController {
         // self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.jpeg")!)
         // Do any additional setup after loading the view.
        
-        let backgroundImage = UIImage(named: "quizwallpaper.jpg")
+        let backgroundImage = UIImage(named: "board.jpg")
         
         var imageView: UIImageView!
         

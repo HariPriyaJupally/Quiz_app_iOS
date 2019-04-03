@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.jpeg")!)
         // Do any additional setup after loading the view.
         
-        let backgroundImage = UIImage(named: "quizwallpaper.jpg")
+        let backgroundImage = UIImage(named: "bluewallpaper.jpg")
         
         var imageView: UIImageView!
         
