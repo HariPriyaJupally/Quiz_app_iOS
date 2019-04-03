@@ -17,19 +17,22 @@ class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var questionsTableView: UITableView!
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "questions")!
-        cell.textLabel?.text = Result.shared.results[indexPath.row].difficulty
+        cell.textLabel?.text = Result.shared.results[indexPath.row].question
         return cell
     }
     
 
+    @IBAction func reloadBTN(_ sender: Any) {
+        let urlSession = URLSession.shared
+        let url = URL(string: apiURL)!
+        urlSession.dataTask(with: url, completionHandler: showData).resume()
+    }
+    
     var apiURL = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         questionsTableView.dataSource = self
         questionsTableView.delegate = self
-        let urlSession = URLSession.shared
-        let url = URL(string: apiURL)!
-        urlSession.dataTask(with: url, completionHandler: showData).resume()
         // Do any additional setup after loading the view.
         
         let backgroundImage = UIImage(named: "mzl.ulplplbr.png")
@@ -52,13 +55,27 @@ class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func showData(data:Data?, urlResponse:URLResponse?, error:Error?){
+        var question: [String: Any]
         do {
-            let decoder = JSONDecoder()
-            let questions = try decoder.decode([Quiz].self, from: data!)
-            DispatchQueue.main.async {
-                self.questionsTableView.reloadData()
+            try question = JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+            if question != nil {
+                let quizData = question["results"] as? [[String:Any]]
+                
+                for i in 0 ..< quizData!.count {
+                    let category = quizData![i]["category"] as! String
+                    let type = quizData![i]["type"] as! String
+                    let difficulty = quizData![i]["difficulty"] as! String
+                    let question = quizData![i]["question"] as! String
+                    let correct_answer = quizData![i]["correct_answer"] as! String
+                    let incorrect_answers = quizData![i]["incorrect_answers"] as! [String]
+                    let quiz = Quiz(category: category, type: type, difficulty: difficulty, question: question, correct_answer: correct_answer, incorrect_answers: incorrect_answers)
+                    Result.shared.addQuiz(quiz: quiz)
+                }
+                DispatchQueue.main.async {
+                    self.questionsTableView.reloadData()
+                }
             }
-        }catch {
+        } catch {
             print(error)
         }
     }

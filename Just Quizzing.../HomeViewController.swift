@@ -53,9 +53,9 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.pickerType.dataSource = self
         pickerDifficulty.tag = 1
         pickerType.tag = 2
-        pickerDifficultyContents = ["easy", "medium", "difficult", "Any Difficulty"]
+        pickerDifficultyContents = ["Easy", "Medium", "Difficult", "Any Difficulty"]
         
-        pickerTypeContents = ["multiple", "True or False", "Any Type"]
+        pickerTypeContents = ["Multiple Choice", "True or False", "Any Type"]
         
     }
     
@@ -123,29 +123,34 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if Int(NumQATF.text!) != nil && pickerTypeContents[pickerDifficulty.selectedRow(inComponent: 0)] != "Any Difficulty" && pickerTypeContents[pickerType.selectedRow(inComponent: 0)] != "Any Type"{
-            apiURL = "https://opentdb.com/api.php?amount=\(NumQATF.text!)&category=18&difficulty=\(pickerDifficultyContents[pickerDifficulty.selectedRow(inComponent: 0)])&type=\(pickerTypeContents[pickerType.selectedRow(inComponent: 0)])"
-            //apiURL = apiURL.replacingOccurrences(of: "10", with: apiURL)
-            //            let urlSession = URLSession.shared
-            //            let url = URL(string: apiURL)
-            //            urlSession.dataTask(with: url!)
-            //            print(apiURL)
+            apiURL = "https://opentdb.com/api.php?amount=\(NumQATF.text!)&category=18&difficulty=\(String(describing: Q_Difficulty(rawValue: pickerDifficultyContents[pickerDifficulty.selectedRow(inComponent: 0)])!))&type=\(String(describing: Q_Type(rawValue: pickerTypeContents[pickerType.selectedRow(inComponent: 0)])!))"
             
         }
         else if Int(NumQATF.text!) != nil && pickerDifficultyContents[pickerDifficulty.selectedRow(inComponent: 0)] == "Any Difficulty" && pickerTypeContents[pickerType.selectedRow(inComponent: 0)] == "Any Type" {
-            apiURL = "https://opentdb.com/api.php?amount=\(NumQATF.text!)&category=18&difficulty=\(pickerDifficultyContents[pickerDifficulty.selectedRow(inComponent: 0)])&type=\(pickerTypeContents[pickerType.selectedRow(inComponent: 0)])"
-            //apiURL = apiURL.replacingOccurrences(of: "10", with: apiURL)
-            //            let urlSession = URLSession.shared
-            //            let url = URL(string: apiURL)
-            //            urlSession.dataTask(with: url!)
-            //            print(apiURL)
+            apiURL = "https://opentdb.com/api.php?amount=\(NumQATF.text!)&category=18)"
+                print(apiURL)
+        }else if Int(NumQATF.text!) != nil && pickerDifficultyContents[pickerDifficulty.selectedRow(inComponent: 0)] == "Any Difficulty" && pickerTypeContents[pickerType.selectedRow(inComponent: 0)] != "Any Type"{
+            apiURL = "https://opentdb.com/api.php?amount=\(NumQATF.text!)&category=18&type=\(String(describing: Q_Type(rawValue: pickerTypeContents[pickerType.selectedRow(inComponent: 0)])!))"
+        }else if Int(NumQATF.text!) != nil && pickerDifficultyContents[pickerDifficulty.selectedRow(inComponent: 0)] != "Any Difficulty" && pickerTypeContents[pickerType.selectedRow(inComponent: 0)] == "Any Type"{
+            apiURL = "https://opentdb.com/api.php?amount=\(NumQATF.text!)&category=18&difficulty=\(String(describing: Q_Difficulty(rawValue: pickerDifficultyContents[pickerDifficulty.selectedRow(inComponent: 0)])!))"
         }
         else {
             displayMessage()
         }
         let quizDVC = segue.destination as! QuizViewController
-        // Pass the selected object to the new view controller.
         quizDVC.apiURL = self.apiURL
         print(quizDVC.apiURL)
     }
+}
+
+enum Q_Difficulty: String {
+    case easy = "Easy"
+    case medium = "Medium"
+    case difficult = "Difficult"
+}
+
+enum Q_Type: String {
+    case multiple = "Multiple Choice"
+    case boolean = "True or False"
 }
 

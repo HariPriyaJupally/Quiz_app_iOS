@@ -29,6 +29,11 @@ struct Result : Codable {
         self.response_code = response_code
         self.results = results
     }
+    
+    mutating func addQuiz(quiz: Quiz){
+        results.append(quiz)
+    }
+
 }
 
 
