@@ -30,7 +30,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let backgroundImage = UIImage(named: "mzl.ulplplbr.png")
+        let backgroundImage = UIImage(named: "quizwallpaper.jpg")
         
         var imageView: UIImageView!
         

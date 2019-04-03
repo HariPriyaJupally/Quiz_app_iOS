@@ -17,25 +17,27 @@ class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var questionsTableView: UITableView!
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "questions")!
-        cell.textLabel?.text = Result.shared.results[indexPath.row].question
+        let questionLBL = cell.viewWithTag(100) as! UILabel
+        let optionsLBL = cell.viewWithTag(200) as! UILabel
+        questionLBL.text = Result.shared.results[indexPath.row].question
+        optionsLBL.text = Result.shared.results[indexPath.row].correct_answer
         return cell
     }
     
 
-    @IBAction func reloadBTN(_ sender: Any) {
-        let urlSession = URLSession.shared
-        let url = URL(string: apiURL)!
-        urlSession.dataTask(with: url, completionHandler: showData).resume()
-    }
+
     
     var apiURL = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         questionsTableView.dataSource = self
         questionsTableView.delegate = self
+        let urlSession = URLSession.shared
+        let url = URL(string: apiURL)!
+        urlSession.dataTask(with: url, completionHandler: showData).resume()
         // Do any additional setup after loading the view.
         
-        let backgroundImage = UIImage(named: "mzl.ulplplbr.png")
+        let backgroundImage = UIImage(named: "quizwallpaper.jpgg")
         
         var imageView: UIImageView!
         

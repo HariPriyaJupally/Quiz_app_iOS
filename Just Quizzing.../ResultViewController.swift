@@ -13,7 +13,7 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        let backgroundImage = UIImage(named: "mzl.ulplplbr.png")
+        let backgroundImage = UIImage(named: "quizwallpaper.jpg")
         
         var imageView: UIImageView!
         
