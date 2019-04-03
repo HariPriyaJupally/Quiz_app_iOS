@@ -559,7 +559,7 @@
         <!--Profile-->
         <scene sceneID="iTY-Pv-5rZ">
             <objects>
-                <viewController id="bkg-Bn-MN6" sceneMemberID="viewController">
+                <viewController id="bkg-Bn-MN6" customClass="AccountViewController" customModule="Just_Quizzing___" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V6g-yJ-RZk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -775,8 +775,7 @@
         <image name="icons8-user-64" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vSd-AW-2JF"/>
-        <segue reference="WCS-c8-JdZ"/>
+        <segue reference="nRc-Gu-aNv"/>
         <segue reference="RJC-HA-mEs"/>
     </inferredMetricsTieBreakers>
 </document>

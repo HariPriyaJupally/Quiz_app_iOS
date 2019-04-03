@@ -24,6 +24,7 @@
 		8D4E12E314DAF760E95CF46C /* Pods_Just_Quizzing___.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B9ECA19EFF2FC41C52CF03 /* Pods_Just_Quizzing___.framework */; };
 		CDF47A1CB4CA37DBFF6B3DB6 /* Pods_Just_Quizzing___Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA2E116710E7A126CC79FE27 /* Pods_Just_Quizzing___Tests.framework */; };
 		F0157DF42253005400B6466C /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0157DF32253005400B6466C /* QuizModel.swift */; };
+		F09B42FC2254516C00B6C0E0 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09B42FB2254516C00B6C0E0 /* AccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		DA2E116710E7A126CC79FE27 /* Pods_Just_Quizzing___Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_Just_Quizzing___Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D52DD4A5D1205570A437D6 /* Pods-Just Quizzing...UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Just Quizzing...UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Just Quizzing...UITests/Pods-Just Quizzing...UITests.release.xcconfig"; sourceTree = "<group>"; };
 		F0157DF32253005400B6466C /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
+		F09B42FB2254516C00B6C0E0 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		F256776471FBA999D3F4A06C /* Pods_Just_Quizzing___UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_Just_Quizzing___UITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -141,6 +143,7 @@
 				3FB7F2C722371427001E9765 /* QuizViewController.swift */,
 				3FB7F2C9223721DF001E9765 /* ResultViewController.swift */,
 				F0157DF32253005400B6466C /* QuizModel.swift */,
+				F09B42FB2254516C00B6C0E0 /* AccountViewController.swift */,
 			);
 			path = "Just Quizzing...";
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				3FB7F2CA223721DF001E9765 /* ResultViewController.swift in Sources */,
 				F0157DF42253005400B6466C /* QuizModel.swift in Sources */,
 				3F4344442221F953008A04EF /* AppDelegate.swift in Sources */,
+				F09B42FC2254516C00B6C0E0 /* AccountViewController.swift in Sources */,
 				160580062224EEAC00382692 /* HistoryViewController.swift in Sources */,
 				3F418622223386340000DF3B /* LoginViewController.swift in Sources */,
 				3F4344462221F953008A04EF /* HomeViewController.swift in Sources */,
