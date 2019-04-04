@@ -16,6 +16,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var confirmPasswordTF: UITextField!
     
+    var backendless = Backendless.sharedInstance()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +73,9 @@ class SignUpViewController: UIViewController {
             displayAlert(msg: "Password is Unmatched")
             
         } else {
+            let userBackend = BackendlessUser()
+            userBackend.setProperties(["name": fullNameTF.text!, "email": emailIdTF.text!, "password": passwordTF.text!])
+            let user = self.backendless?.userService.register(userBackend)
             displayAfterRegistered(msg: "Registered new user")
 
         }

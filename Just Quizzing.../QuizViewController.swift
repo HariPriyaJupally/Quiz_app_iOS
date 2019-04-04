@@ -37,7 +37,7 @@ class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDe
         urlSession.dataTask(with: url, completionHandler: showData).resume()
         // Do any additional setup after loading the view.
         
-        let backgroundImage = UIImage(named: "quizwallpaper.jpgg")
+        let backgroundImage = UIImage(named: "board.jpgg")
         
         var imageView: UIImageView!
         

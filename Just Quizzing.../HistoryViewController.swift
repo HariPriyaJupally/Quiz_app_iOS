@@ -30,7 +30,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let backgroundImage = UIImage(named: "time.jpg")
+        let backgroundImage = UIImage(named: "board.jpg")
         
         var imageView: UIImageView!
         

@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.jpeg")!)
         // Do any additional setup after loading the view.
         
-        let backgroundImage = UIImage(named: "bluewallpaper.jpg")
+        let backgroundImage = UIImage(named: "board.jpg")
         
         var imageView: UIImageView!
         
@@ -52,22 +52,8 @@ class LoginViewController: UIViewController {
         super.touchesBegan(touches, with: event)
     }
     @IBAction func loginBtn(_ sender: Any) {
-//        Backendless.sharedInstance().userService.login(userNameTF.text!,
-//                                                       password:passwordTF.text!,
-//                                                       response: { user in
-//                                                        if user != nil {
-//                                                            if self.rememberMESwitch.isOn {
-//                                                                Backendless.sharedInstance()?.userService.setStayLoggedIn(true)
-//                                                            } else {
-//                                                                Backendless.sharedInstance()?.userService.setStayLoggedIn(false)
-//                                                            }
-//                                                            self.performSegue(withIdentifier: "login", sender: user)
-//                                                        }
-//
-//        },error: { fault in
-//            self.display(title: "Login Failed", msg: (fault?.message!)!)
-//
-//        })
+       Backendless.sharedInstance().userService.login(userNameTF.text!,
+                                                       password:passwordTF.text!)
     }
     
     

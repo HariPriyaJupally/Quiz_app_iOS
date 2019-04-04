@@ -26,7 +26,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         NumQATF.delegate = self
-        let backgroundImage = UIImage(named: "shades.jpg")
+        let backgroundImage = UIImage(named: "board.jpg")
         
         var imageView: UIImageView!
         
