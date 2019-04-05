@@ -18,9 +18,15 @@ class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "questions")!
         let questionLBL = cell.viewWithTag(100) as! UILabel
-        let optionsLBL = cell.viewWithTag(200) as! UILabel
+        let optionsLBL1 = cell.viewWithTag(200) as! UILabel
+        let optionsLBL2 = cell.viewWithTag(300) as! UILabel
+        let optionsLBL3 = cell.viewWithTag(400) as! UILabel
+        let optionsLBL4 = cell.viewWithTag(500) as! UILabel
         questionLBL.text = Result.shared.results[indexPath.row].question
-        optionsLBL.text = Result.shared.results[indexPath.row].correct_answer
+        optionsLBL1.text = Result.shared.results[indexPath.row].correct_answer
+        optionsLBL2.text = Result.shared.results[indexPath.row].incorrect_answers[0]
+        optionsLBL3.text = Result.shared.results[indexPath.row].incorrect_answers[1]
+        optionsLBL4.text = Result.shared.results[indexPath.row].incorrect_answers[2]
         return cell
     }
     
@@ -83,14 +89,10 @@ class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+     //In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     let quizDVC1 = segue.destination as! ResultViewController
     }
-    */
 
 }

@@ -41,8 +41,8 @@ class LoginViewController: UIViewController {
     }
     
     
-    func display(title:String, msg:String) {
-        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+    func display(msg:String) {
+        let alert = UIAlertController(title: "Alert", message: msg, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
@@ -51,9 +51,26 @@ class LoginViewController: UIViewController {
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
     }
+    func isValidPassword(password:String) -> Bool{
+        return password.count >= 8
+    }
+    
+    
     @IBAction func loginBtn(_ sender: Any) {
+        if userNameTF.text!.isEmpty || passwordTF.text!.isEmpty {
+            display(msg: "Enter values for all fields or if new user click on SignUp")
+        }
+        else if userNameTF.text!.isEmpty {
+            display(msg: "Enter UserName or if new user click on SignUp")
+        }
+        else if passwordTF.text!.isEmpty {
+            display(msg: "Enter a valid password")
+        }
+        else {
+        
        Backendless.sharedInstance().userService.login(userNameTF.text!,
                                                        password:passwordTF.text!)
+        }
     }
     
     
