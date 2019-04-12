@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Thz-Uk-z1w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Thz-Uk-z1w">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -377,7 +377,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="230" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SEA-qr-vt8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SEA-qr-vt8">
                                 <rect key="frame" x="7" y="257" width="352" height="201"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -389,61 +389,68 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLS-yK-0Le">
-                                                    <rect key="frame" x="14" y="0.0" width="338" height="65"/>
+                                                    <rect key="frame" x="14" y="0.0" width="338" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZK-ub-E8v">
-                                                    <rect key="frame" x="14" y="64" width="333" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="lRy-re-u3o"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="300" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qz7-0S-5ST">
-                                                    <rect key="frame" x="14" y="105" width="333" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="400" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43L-Z7-1ZZ">
-                                                    <rect key="frame" x="14" y="143.5" width="333" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="naU-AY-RLn"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="500" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="So2-SX-cxM">
-                                                    <rect key="frame" x="14" y="181.5" width="333" height="22.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <button opaque="NO" tag="200" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKt-7w-Roe" customClass="DLRadioButton">
+                                                    <rect key="frame" x="15" y="28" width="322" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <accessibility key="accessibilityConfiguration" label="first"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleColor" red="0.23961615689948668" green="0.25974078253178823" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <outletCollection property="otherButtons" destination="v7h-zV-dxP" id="kyC-oK-sfE"/>
+                                                        <outletCollection property="otherButtons" destination="2gG-Oa-kup" id="Hnv-mV-Tew"/>
+                                                        <outletCollection property="otherButtons" destination="luc-hT-Jdp" id="p8i-1z-ndB"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="300" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7h-zV-dxP" customClass="DLRadioButton">
+                                                    <rect key="frame" x="14" y="81" width="323" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <accessibility key="accessibilityConfiguration" label="second"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleColor" red="0.23961615689999999" green="0.25974078249999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <outletCollection property="otherButtons" destination="cKt-7w-Roe" id="KyS-qR-bbl"/>
+                                                        <outletCollection property="otherButtons" destination="2gG-Oa-kup" id="e2O-mS-FYw"/>
+                                                        <outletCollection property="otherButtons" destination="luc-hT-Jdp" id="wI6-UI-EOJ"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="400" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gG-Oa-kup" customClass="DLRadioButton">
+                                                    <rect key="frame" x="15" y="119" width="322" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <accessibility key="accessibilityConfiguration" label="third"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleColor" red="0.23961615689999999" green="0.25974078249999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <outletCollection property="otherButtons" destination="cKt-7w-Roe" id="Haf-dQ-gtf"/>
+                                                        <outletCollection property="otherButtons" destination="v7h-zV-dxP" id="NeA-c4-tLk"/>
+                                                        <outletCollection property="otherButtons" destination="luc-hT-Jdp" id="9KE-xQ-YPr"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="500" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luc-hT-Jdp" customClass="DLRadioButton">
+                                                    <rect key="frame" x="14" y="171" width="323" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <accessibility key="accessibilityConfiguration" label="fourth"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleColor" red="0.23961615689999999" green="0.25974078249999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <outletCollection property="otherButtons" destination="cKt-7w-Roe" id="hda-JT-Boi"/>
+                                                        <outletCollection property="otherButtons" destination="v7h-zV-dxP" id="PMp-RY-Ups"/>
+                                                        <outletCollection property="otherButtons" destination="2gG-Oa-kup" id="dMP-Yi-bD7"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="NLS-yK-0Le" secondAttribute="trailing" id="3ZH-sf-kdD"/>
-                                                <constraint firstItem="43L-Z7-1ZZ" firstAttribute="top" secondItem="Qz7-0S-5ST" secondAttribute="bottom" constant="19" id="7tu-QJ-9NY"/>
                                                 <constraint firstItem="NLS-yK-0Le" firstAttribute="top" secondItem="J9L-9s-ad3" secondAttribute="top" id="H37-Pt-N0J"/>
-                                                <constraint firstItem="cZK-ub-E8v" firstAttribute="leading" secondItem="Qz7-0S-5ST" secondAttribute="leading" id="Jar-wl-cif"/>
-                                                <constraint firstItem="Qz7-0S-5ST" firstAttribute="centerY" secondItem="J9L-9s-ad3" secondAttribute="centerY" id="Mav-k2-sgg"/>
-                                                <constraint firstItem="Qz7-0S-5ST" firstAttribute="trailing" secondItem="43L-Z7-1ZZ" secondAttribute="trailing" id="NZd-oj-ML8"/>
-                                                <constraint firstItem="cZK-ub-E8v" firstAttribute="trailing" secondItem="Qz7-0S-5ST" secondAttribute="trailing" id="PH0-e6-FYc"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="So2-SX-cxM" secondAttribute="bottom" constant="15" id="PNe-ZF-ilD"/>
-                                                <constraint firstItem="Qz7-0S-5ST" firstAttribute="top" secondItem="NLS-yK-0Le" secondAttribute="bottom" constant="40" id="QJB-8O-Ipm"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="cZK-ub-E8v" secondAttribute="trailing" constant="-10" id="e0B-Hi-RmF"/>
                                                 <constraint firstItem="NLS-yK-0Le" firstAttribute="leading" secondItem="J9L-9s-ad3" secondAttribute="leadingMargin" constant="-1" id="fYW-Bl-NbB"/>
-                                                <constraint firstItem="cZK-ub-E8v" firstAttribute="top" secondItem="J9L-9s-ad3" secondAttribute="topMargin" constant="53" id="i4d-Xx-Mo2"/>
-                                                <constraint firstItem="Qz7-0S-5ST" firstAttribute="top" secondItem="cZK-ub-E8v" secondAttribute="bottom" constant="20" id="j3a-qw-aXS"/>
-                                                <constraint firstItem="43L-Z7-1ZZ" firstAttribute="leading" secondItem="So2-SX-cxM" secondAttribute="leading" id="jPM-6J-YQ6"/>
-                                                <constraint firstItem="So2-SX-cxM" firstAttribute="top" secondItem="43L-Z7-1ZZ" secondAttribute="bottom" constant="17" id="m7b-Dy-Lgf"/>
-                                                <constraint firstItem="43L-Z7-1ZZ" firstAttribute="trailing" secondItem="So2-SX-cxM" secondAttribute="trailing" id="pAs-2V-Msw"/>
-                                                <constraint firstItem="Qz7-0S-5ST" firstAttribute="leading" secondItem="43L-Z7-1ZZ" secondAttribute="leading" id="pRf-9I-FDg"/>
-                                                <constraint firstItem="NLS-yK-0Le" firstAttribute="leading" secondItem="cZK-ub-E8v" secondAttribute="leading" id="rUK-AO-tQ3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -482,7 +489,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9G7-2C-s9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2641" y="-1036"/>
+            <point key="canvasLocation" x="2640.8000000000002" y="-1036.7316341829087"/>
         </scene>
         <!--Title-->
         <scene sceneID="D60-ja-OoD">

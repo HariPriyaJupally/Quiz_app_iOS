@@ -8,7 +8,11 @@
 
 import UIKit
 
+import DLRadioButton
+
 class ResultViewController: UIViewController {
+    var radioButtonValue: String!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +37,8 @@ class ResultViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    
+   
     
 
     /*

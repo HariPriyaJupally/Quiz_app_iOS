@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DLRadioButton
 
 class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -18,15 +19,15 @@ class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "questions")!
         let questionLBL = cell.viewWithTag(100) as! UILabel
-        let optionsLBL1 = cell.viewWithTag(200) as! UILabel
-        let optionsLBL2 = cell.viewWithTag(300) as! UILabel
-        let optionsLBL3 = cell.viewWithTag(400) as! UILabel
-        let optionsLBL4 = cell.viewWithTag(500) as! UILabel
+        let optionsLBL1 = cell.viewWithTag(200) as! DLRadioButton
+        let optionsLBL2 = cell.viewWithTag(300) as! DLRadioButton
+        let optionsLBL3 = cell.viewWithTag(400) as! DLRadioButton
+        let optionsLBL4 = cell.viewWithTag(500) as! DLRadioButton
         questionLBL.text = Result.shared.results[indexPath.row].question
-        optionsLBL1.text = Result.shared.results[indexPath.row].correct_answer
-        optionsLBL2.text = Result.shared.results[indexPath.row].incorrect_answers[0]
-        optionsLBL3.text = Result.shared.results[indexPath.row].incorrect_answers[1]
-        optionsLBL4.text = Result.shared.results[indexPath.row].incorrect_answers[2]
+        optionsLBL1.setTitle(Result.shared.results[indexPath.row].correct_answer, for: [])
+        optionsLBL2.setTitle(Result.shared.results[indexPath.row].incorrect_answers[0], for: [])
+        optionsLBL3.setTitle(Result.shared.results[indexPath.row].incorrect_answers[1], for: [])
+        optionsLBL4.setTitle(Result.shared.results[indexPath.row].incorrect_answers[2], for: [])
         return cell
     }
     
@@ -95,4 +96,16 @@ class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDe
      let quizDVC1 = segue.destination as! ResultViewController
     }
 
+    var radioButtonValue: String?
+    
+    @objc @IBAction fileprivate func logSelectedButton(_ radioButton : DLRadioButton) {
+        if(radioButton.isMultipleSelectionEnabled){
+            for button in radioButton.selectedButtons() {
+                print(String(format: "%Q is selected. \n", button.titleLabel!.text!));
+            }
+            
+        } else {
+            radioButtonValue = radioButton.selected()!.titleLabel!.text!
+        }
+    }
 }
