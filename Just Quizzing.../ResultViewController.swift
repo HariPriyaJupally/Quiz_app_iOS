@@ -11,12 +11,14 @@ import UIKit
 import DLRadioButton
 
 class ResultViewController: UIViewController {
-    var radioButtonValue: String!
+    var result: Int!
     
 
+    @IBOutlet weak var scoreLBL: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        print(result)
         let backgroundImage = UIImage(named: "board.jpg")
         
         var imageView: UIImageView!
@@ -34,7 +36,7 @@ class ResultViewController: UIViewController {
         view.addSubview(imageView)
         
         self.view.sendSubviewToBack(imageView)
-        
+        scoreLBL.text = "\(result!)"
         // Do any additional setup after loading the view.
     }
     

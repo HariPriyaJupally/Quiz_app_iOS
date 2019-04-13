@@ -9,67 +9,62 @@
 import UIKit
 import DLRadioButton
 
-class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Result.shared.results.count
-        
-    }
+class QuizViewController: UIViewController {
     
-    @IBOutlet weak var questionsTableView: UITableView!
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "questions")!
-        let questionLBL = cell.viewWithTag(100) as! UILabel
-        let optionsLBL1 = cell.viewWithTag(200) as! DLRadioButton
-        let optionsLBL2 = cell.viewWithTag(300) as! DLRadioButton
-        let optionsLBL3 = cell.viewWithTag(400) as! DLRadioButton
-        let optionsLBL4 = cell.viewWithTag(500) as! DLRadioButton
-        questionLBL.text = Result.shared.results[indexPath.row].question
-        optionsLBL1.setTitle(Result.shared.results[indexPath.row].correct_answer, for: [])
-        optionsLBL2.setTitle(Result.shared.results[indexPath.row].incorrect_answers[0], for: [])
-        optionsLBL3.setTitle(Result.shared.results[indexPath.row].incorrect_answers[1], for: [])
-        optionsLBL4.setTitle(Result.shared.results[indexPath.row].incorrect_answers[2], for: [])
-        return cell
-    }
+    @IBOutlet weak var option1BTN: DLRadioButton!
+    
+    @IBOutlet weak var option2BTN: DLRadioButton!
+    
+    @IBOutlet weak var option3BTN: DLRadioButton!
+    
+    @IBOutlet weak var option4BTN: DLRadioButton!
+    
+    @IBOutlet weak var questionLBL: UILabel!
+    
+    @IBOutlet weak var currentQuestionNumLBL: UILabel!
+    
+    @IBOutlet weak var totalQuestionLBL: UILabel!
     
     var selectedChoices: String!
     
-    @IBAction func submitBTN(_ sender: DLRadioButton) {
-//        let text = sender.titleLabel?.text
-//        self.selectedChoices[text.stringValue] = sender.tag
-//        if(!self.selectedIndex.contains((sender.indexPath))){
-//            self.selectedIndex.append(sender.indexPath)
-//        }
+    var noOfQuestions: Int = 0
+    
+    var questionNumber: Int = 0
+    
+    var numberOfCorrectAnswers = 0
+    
+    @IBAction func submitBTN(_ sender: Any) {
+        self.numberOfCorrectAnswers = validateAnswers()
+    }
+    
+    func validateAnswers() -> Int {
+        var count = 0
+        for i in 0..<selectedAnswers.count {
+            if selectedAnswers[i] == Result.shared.results[i].correct_answer {
+                count += 1
+            }
+        }
+        return count
     }
     
     var apiURL = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        questionsTableView.dataSource = self
-        questionsTableView.delegate = self
         let urlSession = URLSession.shared
         let url = URL(string: apiURL)!
         urlSession.dataTask(with: url, completionHandler: showData).resume()
-        // Do any additional setup after loading the view.
-        
-        let backgroundImage = UIImage(named: "board.jpgg")
-        
-        var imageView: UIImageView!
-        
-        imageView = UIImageView(frame: view.bounds)
-        
-        imageView.contentMode = .scaleAspectFill
-        
-        imageView.clipsToBounds = true
-        
-        imageView.image = backgroundImage
-        
-        imageView.center = view.center
-        
-        view.addSubview(imageView)
-        
-        self.view.sendSubviewToBack(imageView)
+        totalQuestionLBL.text = "\(noOfQuestions)"
     }
+    
+    func displayQuestion(){
+        questionLBL.text = Result.shared.results[questionNumber].question
+        option1BTN.setTitle(Result.shared.results[questionNumber].correct_answer, for: [])
+        option2BTN.setTitle(Result.shared.results[questionNumber].incorrect_answers[0], for: [])
+        option3BTN.setTitle(Result.shared.results[questionNumber].incorrect_answers[1], for: [])
+        option4BTN.setTitle(Result.shared.results[questionNumber].incorrect_answers[2], for: [])
+        currentQuestionNumLBL.text = "\(questionNumber + 1)"
+    }
+    
     
     func showData(data:Data?, urlResponse:URLResponse?, error:Error?){
         var question: [String: Any]
@@ -89,7 +84,7 @@ class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     Result.shared.addQuiz(quiz: quiz)
                 }
                 DispatchQueue.main.async {
-                    self.questionsTableView.reloadData()
+                    self.displayQuestion()
                 }
             }
         } catch {
@@ -97,24 +92,21 @@ class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    
-    
-    //In a storyboard-based application, you will often want to do a little preparation before navigation
+
+    var selectedAnswers:[String] = []
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let quizDVC1 = segue.destination as! ResultViewController
+        quizDVC1.result = numberOfCorrectAnswers
     }
     
-    
-    var radioButtonValue: String!
-    
-    @objc @IBAction fileprivate func logSelectedButton(_ radioButton : DLRadioButton) {
-        if(radioButton.isMultipleSelectionEnabled){
-            for button in radioButton.selectedButtons() {
-                print(String(format: "%Q is selected. \n", button.titleLabel!.text!));
-            }
-            
-        } else {
-            radioButtonValue = radioButton.selected()!.titleLabel!.text!
+    @IBAction func nextQuestionBTN(_ sender: Any) {
+        print(String(format: "%@ is selected. \n", option1BTN.selected()!.titleLabel!.text!));
+        selectedAnswers.append(option1BTN.selected()!.titleLabel!.text!)
+        if questionNumber < noOfQuestions - 1 {
+            questionNumber += 1
+            displayQuestion()
+        }else{
+            submitBTN(self)
         }
     }
 }

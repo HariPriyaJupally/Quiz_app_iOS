@@ -138,6 +138,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             displayMessage()
         }
         let quizDVC = segue.destination as! QuizViewController
+        quizDVC.noOfQuestions = Int(self.NumQATF.text!)!
         quizDVC.apiURL = self.apiURL
         print(quizDVC.apiURL)
     }
