@@ -11,12 +11,13 @@ import DLRadioButton
 
 class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return Result.shared.results.count
-
+        return Result.shared.results.count
+        
     }
     
     @IBOutlet weak var questionsTableView: UITableView!
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "questions")!
         let questionLBL = cell.viewWithTag(100) as! UILabel
         let optionsLBL1 = cell.viewWithTag(200) as! DLRadioButton
@@ -31,8 +32,15 @@ class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
-
-
+    var selectedChoices: String!
+    
+    @IBAction func submitBTN(_ sender: DLRadioButton) {
+//        let text = sender.titleLabel?.text
+//        self.selectedChoices[text.stringValue] = sender.tag
+//        if(!self.selectedIndex.contains((sender.indexPath))){
+//            self.selectedIndex.append(sender.indexPath)
+//        }
+    }
     
     var apiURL = ""
     override func viewDidLoad() {
@@ -89,14 +97,15 @@ class QuizViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-
-
-     //In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     let quizDVC1 = segue.destination as! ResultViewController
+    
+    
+    //In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let quizDVC1 = segue.destination as! ResultViewController
     }
-
-    var radioButtonValue: String?
+    
+    
+    var radioButtonValue: String!
     
     @objc @IBAction fileprivate func logSelectedButton(_ radioButton : DLRadioButton) {
         if(radioButton.isMultipleSelectionEnabled){
