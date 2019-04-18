@@ -12,7 +12,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return (History.shared.score.count)
+            return LeaderBoard.shared.leaderboard.count
         }  else {
             return -1
         }
@@ -20,8 +20,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "histories")!
-        cell.textLabel?.text = "\(History.shared.date[indexPath.row])"
-        cell.detailTextLabel?.text = "\(History.shared.score[indexPath.row])/\(History.shared.totalScore[indexPath.row])"
+        cell.textLabel?.text = "\(LeaderBoard.shared.leaderboard[indexPath.row])"
+        cell.detailTextLabel?.text = "\(LeaderBoard.shared.leaderboard[indexPath.row])/\(LeaderBoard.shared.leaderboard[indexPath.row])"
         return cell
     }
     override func viewDidLoad() {

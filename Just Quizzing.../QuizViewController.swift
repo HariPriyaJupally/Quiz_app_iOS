@@ -107,7 +107,8 @@ class QuizViewController: UIViewController {
         let quizDVC1 = segue.destination as! ResultViewController
         
         self.numberOfCorrectAnswers = validateAnswers()
-        History.shared.addHistory(score: numberOfCorrectAnswers, totalScore: noOfQuestions, date: Date())
+        print(numberOfCorrectAnswers)
+        LeaderBoard.shared.saveHistory(score: numberOfCorrectAnswers, totalScore: noOfQuestions)
         
         quizDVC1.result = numberOfCorrectAnswers
     }

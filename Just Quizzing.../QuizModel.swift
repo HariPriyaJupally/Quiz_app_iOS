@@ -37,22 +37,57 @@ struct Result : Codable {
 
 }
 
-struct History {
-    var score: [Int]
-    var totalScore: [Int]
-    var date: [Date]
-    init(){
-        score = []
-        totalScore = []
-        date = []
+@objcMembers
+class History: NSObject {
+    var score: Int
+    var totalScore: Int
+    
+    init(score: Int, totalScore: Int){
+        self.score = score
+        self.totalScore = totalScore
+    }
+ 
+    convenience override init(){
+        self.init(score: 0, totalScore: 0)
     }
     
-    mutating func addHistory(score: Int, totalScore: Int, date: Date){
-        self.score.append(score)
-        self.totalScore.append(totalScore)
-        self.date.append(date)
+    var objectId:String?
+    
+    override var description: String { // NSObject adheres to the CustomStringConvertible protocol
+        
+        return "Score: \(score), Total Score: \(totalScore), ObjectId: \(objectId ?? "N/A")"
+        
     }
-    static var shared = History()
+}
+
+class LeaderBoard {
+    let backendless = Backendless.sharedInstance()!
+    
+    var historyDataStore:IDataStore!
+    
+    var leaderboard: [History]
+    
+    static var shared = LeaderBoard()
+    
+    init(leaderboard: [History]){
+        historyDataStore = backendless.data.of(History.self)
+        self.leaderboard = leaderboard
+    }
+    
+    convenience init(){
+        self.init(leaderboard: [])
+    }
+    
+    func numHistory() -> Int {
+        return leaderboard.count
+    }
+    
+    func saveHistory(score: Int, totalScore: Int) {
+        var historyToSave = History(score: score, totalScore: totalScore)
+        historyToSave = historyDataStore.save(historyToSave) as! History
+        leaderboard.append(historyToSave)
+        print(historyToSave)
+    }
 
 }
 
