@@ -10,12 +10,9 @@ import UIKit
 
 class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var history = ["Hari Priya", "Indra"]
-    
-    var scores = [1,2,3,4]
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return history.count
+            return (History.shared.score.count)
         }  else {
             return -1
         }
@@ -23,8 +20,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "histories")!
-        cell.textLabel?.text = history[indexPath.row]
-        cell.detailTextLabel?.text = String(scores[indexPath.row])
+        cell.textLabel?.text = "\(History.shared.date[indexPath.row])"
+        cell.detailTextLabel?.text = "\(History.shared.score[indexPath.row])/\(History.shared.totalScore[indexPath.row])"
         return cell
     }
     override func viewDidLoad() {

@@ -25,6 +25,7 @@ struct Result : Codable {
         self.response_code = ""
         self.results = []
     }
+    
     init(response_code:String, results:[Quiz]) {
         self.response_code = response_code
         self.results = results
@@ -33,6 +34,25 @@ struct Result : Codable {
     mutating func addQuiz(quiz: Quiz){
         results.append(quiz)
     }
+
+}
+
+struct History {
+    var score: [Int]
+    var totalScore: [Int]
+    var date: [Date]
+    init(){
+        score = []
+        totalScore = []
+        date = []
+    }
+    
+    mutating func addHistory(score: Int, totalScore: Int, date: Date){
+        self.score.append(score)
+        self.totalScore.append(totalScore)
+        self.date.append(date)
+    }
+    static var shared = History()
 
 }
 

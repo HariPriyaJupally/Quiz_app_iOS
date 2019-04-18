@@ -34,7 +34,8 @@ class QuizViewController: UIViewController {
     var numberOfCorrectAnswers = 0
     
     @IBAction func submitBTN(_ sender: Any) {
-        self.numberOfCorrectAnswers = validateAnswers()
+        
+        
     }
     
     func validateAnswers() -> Int {
@@ -56,12 +57,20 @@ class QuizViewController: UIViewController {
         totalQuestionLBL.text = "\(noOfQuestions)"
     }
     
+    
     func displayQuestion(){
+        
+        option2BTN.isSelected = false
+        option1BTN.isSelected = false
+        option3BTN.isSelected = false
+        option4BTN.isSelected = false
         questionLBL.text = Result.shared.results[questionNumber].question
-        option1BTN.setTitle(Result.shared.results[questionNumber].correct_answer, for: [])
-        option2BTN.setTitle(Result.shared.results[questionNumber].incorrect_answers[0], for: [])
-        option3BTN.setTitle(Result.shared.results[questionNumber].incorrect_answers[1], for: [])
-        option4BTN.setTitle(Result.shared.results[questionNumber].incorrect_answers[2], for: [])
+        var options = [Result.shared.results[questionNumber].correct_answer, Result.shared.results[questionNumber].incorrect_answers[0], Result.shared.results[questionNumber].incorrect_answers[1], Result.shared.results[questionNumber].incorrect_answers[2]]
+        options.shuffle()
+        option1BTN.setTitle(options[0], for: [])
+        option2BTN.setTitle(options[1], for: [])
+        option3BTN.setTitle(options[2], for: [])
+        option4BTN.setTitle(options[3], for: [])
         currentQuestionNumLBL.text = "\(questionNumber + 1)"
     }
     
@@ -96,6 +105,10 @@ class QuizViewController: UIViewController {
     var selectedAnswers:[String] = []
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let quizDVC1 = segue.destination as! ResultViewController
+        
+        self.numberOfCorrectAnswers = validateAnswers()
+        History.shared.addHistory(score: numberOfCorrectAnswers, totalScore: noOfQuestions, date: Date())
+        
         quizDVC1.result = numberOfCorrectAnswers
     }
     

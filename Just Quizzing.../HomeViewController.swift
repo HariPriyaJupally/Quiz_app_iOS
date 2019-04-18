@@ -124,7 +124,6 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if Int(NumQATF.text!) != nil && pickerTypeContents[pickerDifficulty.selectedRow(inComponent: 0)] != "Any Difficulty" && pickerTypeContents[pickerType.selectedRow(inComponent: 0)] != "Any Type"{
             apiURL = "https://opentdb.com/api.php?amount=\(NumQATF.text!)&category=18&difficulty=\(String(describing: Q_Difficulty(rawValue: pickerDifficultyContents[pickerDifficulty.selectedRow(inComponent: 0)])!))&type=\(String(describing: Q_Type(rawValue: pickerTypeContents[pickerType.selectedRow(inComponent: 0)])!))"
-            
         }
         else if Int(NumQATF.text!) != nil && pickerDifficultyContents[pickerDifficulty.selectedRow(inComponent: 0)] == "Any Difficulty" && pickerTypeContents[pickerType.selectedRow(inComponent: 0)] == "Any Type" {
             apiURL = "https://opentdb.com/api.php?amount=\(NumQATF.text!)&category=18)"
