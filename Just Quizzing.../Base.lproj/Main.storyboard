@@ -39,7 +39,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ggggGGGG" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b46-Sj-use">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ggggGGGG1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b46-Sj-use">
                                 <rect key="frame" x="236" y="217.5" width="97" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="EUJ-BK-i4w"/>
@@ -862,7 +862,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="o6d-Hi-rw6"/>
-        <segue reference="WCS-c8-JdZ"/>
+        <segue reference="nRc-Gu-aNv"/>
         <segue reference="RZI-xK-qkO"/>
     </inferredMetricsTieBreakers>
 </document>
