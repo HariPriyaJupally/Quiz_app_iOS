@@ -74,7 +74,7 @@ class SignUpViewController: UIViewController {
             
         } else {
             let userBackend = BackendlessUser()
-            userBackend.setProperties(["name": fullNameTF.text!, "email": emailIdTF.text!, "password": passwordTF.text!])
+            userBackend.setProperties(["name": fullNameTF.text!, "email": emailIdTF.text!, "password": passwordTF.text!, "mobile": mobileNumberTF.text!])
             let user = self.backendless?.userService.register(userBackend)
             displayAfterRegistered(msg: "Registered new user")
 

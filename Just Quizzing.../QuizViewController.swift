@@ -35,7 +35,6 @@ class QuizViewController: UIViewController {
     
     @IBAction func submitBTN(_ sender: Any) {
         
-        
     }
     
     func validateAnswers() -> Int {
@@ -51,6 +50,23 @@ class QuizViewController: UIViewController {
     var apiURL = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        let backgroundImage = UIImage(named: "board.jpg")
+        
+        var imageView: UIImageView!
+        
+        imageView = UIImageView(frame: view.bounds)
+        
+        imageView.contentMode = .scaleAspectFill
+        
+        imageView.clipsToBounds = true
+        
+        imageView.image = backgroundImage
+        
+        imageView.center = view.center
+        
+        view.addSubview(imageView)
+        
+        self.view.sendSubviewToBack(imageView)
         let urlSession = URLSession.shared
         let url = URL(string: apiURL)!
         urlSession.dataTask(with: url, completionHandler: showData).resume()
@@ -65,12 +81,22 @@ class QuizViewController: UIViewController {
         option3BTN.isSelected = false
         option4BTN.isSelected = false
         questionLBL.text = Result.shared.results[questionNumber].question
-        var options = [Result.shared.results[questionNumber].correct_answer, Result.shared.results[questionNumber].incorrect_answers[0], Result.shared.results[questionNumber].incorrect_answers[1], Result.shared.results[questionNumber].incorrect_answers[2]]
-        options.shuffle()
-        option1BTN.setTitle(options[0], for: [])
-        option2BTN.setTitle(options[1], for: [])
-        option3BTN.setTitle(options[2], for: [])
-        option4BTN.setTitle(options[3], for: [])
+        var options:[String] = []
+        if Result.shared.results[questionNumber].incorrect_answers.count <= 1 {
+            options += [Result.shared.results[questionNumber].correct_answer, Result.shared.results[questionNumber].incorrect_answers[0]]
+            options.shuffle()
+            option1BTN.setTitle(options[0], for: [])
+            option2BTN.setTitle(options[1], for: [])
+            option3BTN.setTitle("", for: [])
+            option4BTN.setTitle("", for: [])
+        }else {
+            options += [Result.shared.results[questionNumber].correct_answer, Result.shared.results[questionNumber].incorrect_answers[0], Result.shared.results[questionNumber].incorrect_answers[1], Result.shared.results[questionNumber].incorrect_answers[2]]
+            options.shuffle()
+            option1BTN.setTitle(options[0], for: [])
+            option2BTN.setTitle(options[1], for: [])
+            option3BTN.setTitle(options[2], for: [])
+            option4BTN.setTitle(options[3], for: [])
+        }
         currentQuestionNumLBL.text = "\(questionNumber + 1)"
     }
     

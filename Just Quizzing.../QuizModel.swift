@@ -53,8 +53,7 @@ class History: NSObject {
     
     var objectId:String?
     
-    override var description: String { // NSObject adheres to the CustomStringConvertible protocol
-        
+    override var description: String {
         return "Score: \(score), Total Score: \(totalScore), ObjectId: \(objectId ?? "N/A")"
         
     }
@@ -67,15 +66,25 @@ class LeaderBoard {
     
     var leaderboard: [History]
     
+    var username: String
+    var totalScore: Int?
+    var scoreObtained: Int?
+    
+    
+    
     static var shared = LeaderBoard()
     
-    init(leaderboard: [History]){
+    init(leaderboard: [History], totalScore: Int, scoreObtained: Int){
         historyDataStore = backendless.data.of(History.self)
         self.leaderboard = leaderboard
+        self.username = Backendless.sharedInstance()?.userService.currentUser.getProperty("name") as! String
+        self.totalScore = totalScore
+        self.scoreObtained = scoreObtained
     }
     
     convenience init(){
-        self.init(leaderboard: [])
+        self.init(leaderboard: [], totalScore: 0, scoreObtained: 0)
+        
     }
     
     func numHistory() -> Int {
@@ -84,11 +93,38 @@ class LeaderBoard {
     
     func saveHistory(score: Int, totalScore: Int) {
         var historyToSave = History(score: score, totalScore: totalScore)
-        historyToSave = historyDataStore.save(historyToSave) as! History
+//        historyToSave = historyDataStore.save(historyToSave) as! History
         leaderboard.append(historyToSave)
+        saveToLeaderboard(leaderboard: leaderboard)
         print(historyToSave)
     }
+    
+    func saveToLeaderboard(leaderboard: [History] ){
+        var scoreObtained = 0
+        var totalScores = 0
+        for i in leaderboard {
+            scoreObtained += i.score
+            totalScores += i.totalScore
+        }
+        self.scoreObtained = scoreObtained
+        self.totalScore = totalScores
+        Users.shared.users.append(LeaderBoard(leaderboard: leaderboard, totalScore: totalScores, scoreObtained: scoreObtained))
+    }
+    
 
+}
+
+class Users {
+    
+    var users: [LeaderBoard]
+    
+    static var shared = Users()
+    
+    init(){
+        users = []
+    }
+    
+    
 }
 
 

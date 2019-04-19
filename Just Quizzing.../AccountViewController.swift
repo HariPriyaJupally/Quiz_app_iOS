@@ -10,23 +10,29 @@ import UIKit
 
 class AccountViewController: UIViewController {
     
-    @IBOutlet weak var usernameLBL: UITextField!
+    //@IBOutlet weak var usernameLBL: UITextField!
+    @IBOutlet weak var usernameLBL: UILabel!
     
-    @IBOutlet weak var emailLBL: UITextField!
+    //@IBOutlet weak var emailLBL: UITextField!
+    @IBOutlet weak var emailLBL: UILabel!
     
-    @IBOutlet weak var phoneLBL: UITextField!
+    //@IBOutlet weak var phoneLBL: UITextField!
     
+    @IBOutlet weak var phoneLBL: UILabel!
     override func viewWillAppear(_ animated: Bool) {
         usernameLBL.text = Backendless.sharedInstance()?.userService.currentUser.getProperty("name") as? String
         emailLBL.text = Backendless.sharedInstance()?.userService.currentUser.getProperty("email") as? String
         phoneLBL.text = Backendless.sharedInstance()?.userService.currentUser.getProperty("mobile") as? String
         }
     
+//    @IBAction func logOutBTN(_ sender: Any) {
+//        Backendless.sharedInstance()!.userService.logout()
+//    }
+    
+    
     @IBAction func logOutBTN(_ sender: Any) {
         Backendless.sharedInstance()!.userService.logout()
     }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

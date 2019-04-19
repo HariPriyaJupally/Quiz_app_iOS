@@ -36,8 +36,6 @@ class LoginViewController: UIViewController {
         self.view.sendSubviewToBack(imageView)
     
     
-    
-    
     }
     
     
@@ -47,10 +45,12 @@ class LoginViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
     }
+    
     func isValidPassword(password:String) -> Bool{
         return password.count >= 8
     }
@@ -67,11 +67,30 @@ class LoginViewController: UIViewController {
             display(msg: "Enter a valid password")
         }
         else {
-        
-       Backendless.sharedInstance().userService.login(userNameTF.text!,
-                                                       password:passwordTF.text!)
+            
+            Backendless.sharedInstance().userService.login(userNameTF.text!,
+                                                           password:passwordTF.text!)
         }
-    }
+            
+        }
+        
+        
+//        Backendless.sharedInstance().userService.login(userNameTF.text!,
+//                                                       password:passwordTF.text!,
+//                                                       response: { user in
+//                                                        if user != nil {
+//                                                            if self.rememberMESwitch.isOn {
+//                                                                Backendless.sharedInstance()?.userService.setStayLoggedIn(true)
+//                                                            } else {
+//                                                                Backendless.sharedInstance()?.userService.setStayLoggedIn(false)
+//                                                            }
+//                                                            self.performSegue(withIdentifier: "login", sender: user)
+//                                                        }
+        
+//        },error: { fault in
+//            self.display(msg: (fault?.message!)!)
+//
+//        })
     
     
     
@@ -79,7 +98,7 @@ class LoginViewController: UIViewController {
     @IBAction func register(segue:UIStoryboardSegue){}
     @IBAction func cancel(segue:UIStoryboardSegue){}
     
-}
 
+}
 
 

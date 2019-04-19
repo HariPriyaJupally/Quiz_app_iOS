@@ -20,8 +20,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "histories")!
-        cell.textLabel?.text = "\(LeaderBoard.shared.leaderboard[indexPath.row])"
-        cell.detailTextLabel?.text = "\(LeaderBoard.shared.leaderboard[indexPath.row])/\(LeaderBoard.shared.leaderboard[indexPath.row])"
+        cell.textLabel?.text = "Quiz \(indexPath.row+1)"
+        cell.detailTextLabel?.text = "\(LeaderBoard.shared.leaderboard[indexPath.row].score)/\(LeaderBoard.shared.leaderboard[indexPath.row].totalScore)"
         return cell
     }
     override func viewDidLoad() {
