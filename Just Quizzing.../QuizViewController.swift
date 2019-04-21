@@ -33,9 +33,15 @@ class QuizViewController: UIViewController {
     
     var numberOfCorrectAnswers = 0
     
-    @IBAction func submitBTN(_ sender: Any) {
+    @IBAction func submitBTN(_ sender: UIButton) {
         
     }
+    
+    
+    @IBOutlet weak var nextQuestionBTN: UIButton!
+    
+    @IBOutlet weak var submitBTN: UIButton!
+    
     
     func validateAnswers() -> Int {
         var count = 0
@@ -51,31 +57,28 @@ class QuizViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let backgroundImage = UIImage(named: "board.jpg")
-        
         var imageView: UIImageView!
-        
         imageView = UIImageView(frame: view.bounds)
-        
         imageView.contentMode = .scaleAspectFill
-        
         imageView.clipsToBounds = true
-        
         imageView.image = backgroundImage
-        
         imageView.center = view.center
-        
         view.addSubview(imageView)
-        
         self.view.sendSubviewToBack(imageView)
         let urlSession = URLSession.shared
         let url = URL(string: apiURL)!
         urlSession.dataTask(with: url, completionHandler: showData).resume()
         totalQuestionLBL.text = "\(noOfQuestions)"
+        Result.shared.results = []
+        if noOfQuestions == 1 {
+            self.submitBTN.isEnabled = true
+        }else{
+            self.submitBTN.isEnabled = false
+        }
     }
     
     
     func displayQuestion(){
-        
         option2BTN.isSelected = false
         option1BTN.isSelected = false
         option3BTN.isSelected = false
@@ -89,9 +92,13 @@ class QuizViewController: UIViewController {
             option2BTN.setTitle(options[1], for: [])
             option3BTN.setTitle("", for: [])
             option4BTN.setTitle("", for: [])
+            option3BTN.isEnabled = false
+            option4BTN.isEnabled = false
         }else {
             options += [Result.shared.results[questionNumber].correct_answer, Result.shared.results[questionNumber].incorrect_answers[0], Result.shared.results[questionNumber].incorrect_answers[1], Result.shared.results[questionNumber].incorrect_answers[2]]
             options.shuffle()
+            option3BTN.isEnabled = true
+            option4BTN.isEnabled = true
             option1BTN.setTitle(options[0], for: [])
             option2BTN.setTitle(options[1], for: [])
             option3BTN.setTitle(options[2], for: [])
@@ -107,7 +114,6 @@ class QuizViewController: UIViewController {
             try question = JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
             if question != nil {
                 let quizData = question["results"] as? [[String:Any]]
-                
                 for i in 0 ..< quizData!.count {
                     let category = quizData![i]["category"] as! String
                     let type = quizData![i]["type"] as! String
@@ -127,26 +133,44 @@ class QuizViewController: UIViewController {
         }
     }
     
-
+    
     var selectedAnswers:[String] = []
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let quizDVC1 = segue.destination as! ResultViewController
-        
         self.numberOfCorrectAnswers = validateAnswers()
         print(numberOfCorrectAnswers)
         LeaderBoard.shared.saveHistory(score: numberOfCorrectAnswers, totalScore: noOfQuestions)
-        
         quizDVC1.result = numberOfCorrectAnswers
     }
     
     @IBAction func nextQuestionBTN(_ sender: Any) {
-        print(String(format: "%@ is selected. \n", option1BTN.selected()!.titleLabel!.text!));
-        selectedAnswers.append(option1BTN.selected()!.titleLabel!.text!)
-        if questionNumber < noOfQuestions - 1 {
-            questionNumber += 1
-            displayQuestion()
-        }else{
-            submitBTN(self)
+        if option1BTN.isSelected == true || option2BTN.isSelected == true || option3BTN.isSelected == true || option4BTN.isSelected == true   {
+            print(String(format: "%@ is selected. \n", option1BTN.selected()!.titleLabel!.text!));
+            selectedAnswers.append(option1BTN.selected()!.titleLabel!.text!)
+            if questionNumber == noOfQuestions - 1 {
+
+                self.submitBTN.isEnabled = true
+                self.nextQuestionBTN.setTitle("", for: [])
+                self.nextQuestionBTN.isEnabled = false
+            }else if questionNumber < noOfQuestions - 1 {
+                questionNumber += 1
+                displayQuestion()
+                self.submitBTN.isEnabled = false
+            }
+        }else if option1BTN.isSelected == false {
+            displayMessage()
         }
     }
+    
+    
+    func displayMessage(){
+        let alert = UIAlertController(title: "Note",
+                                      message: "Please select a option and click on next button",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default,
+                                      handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
+
+

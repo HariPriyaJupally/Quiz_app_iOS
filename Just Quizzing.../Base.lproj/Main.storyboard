@@ -383,7 +383,7 @@
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitBTN:" destination="2N6-T0-gwk" eventType="touchUpInside" id="Wox-lH-8f1"/>
-                                    <segue destination="A3t-27-cSc" kind="show" id="pQz-YB-kQ6"/>
+                                    <segue destination="A3t-27-cSc" kind="show" identifier="resuts_Id" id="pQz-YB-kQ6"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAI-Am-K9q">
@@ -491,11 +491,13 @@
                     <navigationItem key="navigationItem" title="Quiz" id="iHm-pW-G5k"/>
                     <connections>
                         <outlet property="currentQuestionNumLBL" destination="A5o-RE-VZP" id="zVH-aI-zgb"/>
+                        <outlet property="nextQuestionBTN" destination="EbS-F0-hlj" id="T1w-GI-475"/>
                         <outlet property="option1BTN" destination="fh0-7b-n7c" id="Geb-e8-6NH"/>
                         <outlet property="option2BTN" destination="SiQ-a4-j9B" id="D4D-GB-yMx"/>
                         <outlet property="option3BTN" destination="p7T-DX-8af" id="eB1-XB-GPG"/>
                         <outlet property="option4BTN" destination="eb5-sk-4x4" id="WHH-9O-Ksd"/>
                         <outlet property="questionLBL" destination="IAI-Am-K9q" id="k4x-ai-9MZ"/>
+                        <outlet property="submitBTN" destination="uee-oX-Vnq" id="0r3-BS-X8F"/>
                         <outlet property="totalQuestionLBL" destination="5hW-oe-R4M" id="8Ti-hF-azy"/>
                     </connections>
                 </viewController>
@@ -530,7 +532,7 @@
                                     <color key="titleColor" red="0.36668876649999999" green="0.66539344280000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="49e-Tb-3d3" kind="show" id="WCS-c8-JdZ"/>
+                                    <segue destination="49e-Tb-3d3" kind="show" id="d6Q-jK-cMl"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -789,8 +791,8 @@
                                     <outlet property="delegate" destination="5U2-ah-TM2" id="f5U-yY-9It"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EfL-XU-N9I">
-                                <rect key="frame" x="297" y="85" width="62" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EfL-XU-N9I">
+                                <rect key="frame" x="314.5" y="85" width="44.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -807,6 +809,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBz-Bg-xM9">
+                                <rect key="frame" x="300" y="37" width="47" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reload"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -827,6 +834,9 @@
                         <viewLayoutGuide key="safeArea" id="DAq-gS-ygh"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="history" image="icons8-time-machine-64" selectedImage="icons8-time-machine-64" id="la3-xP-PkS"/>
+                    <connections>
+                        <outlet property="historytableView" destination="lZ8-iN-vJJ" id="N2x-kb-iDu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RUX-JY-UNy" sceneMemberID="firstResponder"/>
             </objects>
@@ -861,8 +871,9 @@
         <image name="icons8-user-64" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="pQz-YB-kQ6"/>
         <segue reference="o6d-Hi-rw6"/>
-        <segue reference="nRc-Gu-aNv"/>
+        <segue reference="d6Q-jK-cMl"/>
         <segue reference="RZI-xK-qkO"/>
     </inferredMetricsTieBreakers>
 </document>

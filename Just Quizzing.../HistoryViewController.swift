@@ -17,6 +17,13 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             return -1
         }
     }
+
+   
+    @IBOutlet weak var historytableView: UITableView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        historytableView.reloadData()
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "histories")!
@@ -44,9 +51,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         view.addSubview(imageView)
         
         self.view.sendSubviewToBack(imageView)
-    
-    
-    
+        
     
     }
     

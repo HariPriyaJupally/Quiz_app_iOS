@@ -21,7 +21,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "players")!
         cell.textLabel?.text = Users.shared.users[indexPath.row].username
-        cell.detailTextLabel?.text = "\(Users.shared.users[indexPath.row].scoreObtained!)/\(Users.shared.users[indexPath.row].totalScore!)"
+        cell.detailTextLabel?.text = "\(Users.shared.users[indexPath.row].scoreObtained)/\(Users.shared.users[indexPath.row].totalScores)"
         return cell
     }
     

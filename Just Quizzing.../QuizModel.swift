@@ -34,7 +34,7 @@ struct Result : Codable {
     mutating func addQuiz(quiz: Quiz){
         results.append(quiz)
     }
-
+    
 }
 
 @objcMembers
@@ -42,24 +42,20 @@ class History: NSObject {
     var score: Int
     var totalScore: Int
     
+    var objectId: String?
+    
     init(score: Int, totalScore: Int){
-        self.score = score
         self.totalScore = totalScore
+        self.score = score
     }
- 
+    
     convenience override init(){
         self.init(score: 0, totalScore: 0)
     }
-    
-    var objectId:String?
-    
-    override var description: String {
-        return "Score: \(score), Total Score: \(totalScore), ObjectId: \(objectId ?? "N/A")"
-        
-    }
 }
 
-class LeaderBoard {
+@objcMembers
+class LeaderBoard: NSObject {
     let backendless = Backendless.sharedInstance()!
     
     var historyDataStore:IDataStore!
@@ -67,24 +63,21 @@ class LeaderBoard {
     var leaderboard: [History]
     
     var username: String
-    var totalScore: Int?
-    var scoreObtained: Int?
-    
-    
+    var totalScores: Int
+    var scoreObtained: Int
     
     static var shared = LeaderBoard()
     
-    init(leaderboard: [History], totalScore: Int, scoreObtained: Int){
+    init(totalScore: Int, scoreObtained: Int){
         historyDataStore = backendless.data.of(History.self)
-        self.leaderboard = leaderboard
+        self.leaderboard = []
         self.username = Backendless.sharedInstance()?.userService.currentUser.getProperty("name") as! String
-        self.totalScore = totalScore
+        self.totalScores = totalScore
         self.scoreObtained = scoreObtained
     }
     
-    convenience init(){
-        self.init(leaderboard: [], totalScore: 0, scoreObtained: 0)
-        
+    convenience override init(){
+        self.init(totalScore: 0, scoreObtained: 0)
     }
     
     func numHistory() -> Int {
@@ -92,14 +85,25 @@ class LeaderBoard {
     }
     
     func saveHistory(score: Int, totalScore: Int) {
-        var historyToSave = History(score: score, totalScore: totalScore)
-//        historyToSave = historyDataStore.save(historyToSave) as! History
+        let historyToSave = History(score: score, totalScore: totalScore)
+        historyDataStore.save(historyToSave)
         leaderboard.append(historyToSave)
-        saveToLeaderboard(leaderboard: leaderboard)
+        saveToLeaderboard(user: Backendless.sharedInstance()?.userService.currentUser.getProperty("name") as! String, leaderboard: leaderboard)
         print(historyToSave)
     }
     
-    func saveToLeaderboard(leaderboard: [History] ){
+    func retrieveAllQuizes() {
+        let queryBuilder = DataQueryBuilder()
+        queryBuilder!.setRelated(["leaderboard"])
+        queryBuilder!.setPageSize(100)
+        Types.tryblock({() -> Void in
+            self.leaderboard = self.historyDataStore.find(queryBuilder) as! [History]
+            print(self.leaderboard)
+        },
+            catchblock: {(fault) -> Void in print(fault ?? "Something has gone wrong  reloadingAllQuizes()")})
+    }
+    
+    func saveToLeaderboard(user: String,leaderboard: [History] ){
         var scoreObtained = 0
         var totalScores = 0
         for i in leaderboard {
@@ -107,11 +111,19 @@ class LeaderBoard {
             totalScores += i.totalScore
         }
         self.scoreObtained = scoreObtained
-        self.totalScore = totalScores
-        Users.shared.users.append(LeaderBoard(leaderboard: leaderboard, totalScore: totalScores, scoreObtained: scoreObtained))
+        self.totalScores = totalScores
+        if Users.shared.users.isEmpty {
+            Users.shared.users.append(LeaderBoard(totalScore: totalScores, scoreObtained: scoreObtained))
+        }else{
+            for i in 0..<Users.shared.users.count {
+                if Users.shared.users[i].username.elementsEqual(user){
+                    Users.shared.users[i] = LeaderBoard( totalScore: totalScores, scoreObtained: scoreObtained)
+                }else{
+                    Users.shared.users.append(LeaderBoard(totalScore: totalScores, scoreObtained: scoreObtained))
+                }
+            }
+        }
     }
-    
-
 }
 
 class Users {
