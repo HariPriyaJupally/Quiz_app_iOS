@@ -139,6 +139,8 @@ class QuizViewController: UIViewController {
         let quizDVC1 = segue.destination as! ResultViewController
         self.numberOfCorrectAnswers = validateAnswers()
         print(numberOfCorrectAnswers)
+        var historyToSave = History(score: numberOfCorrectAnswers, totalScore: noOfQuestions)
+        //Backendless.sharedInstance()!.data.of(History.ofClass()).save(historyToSave)
         LeaderBoard.shared.saveHistory(score: numberOfCorrectAnswers, totalScore: noOfQuestions)
         quizDVC1.result = numberOfCorrectAnswers
     }
@@ -148,7 +150,6 @@ class QuizViewController: UIViewController {
             print(String(format: "%@ is selected. \n", option1BTN.selected()!.titleLabel!.text!));
             selectedAnswers.append(option1BTN.selected()!.titleLabel!.text!)
             if questionNumber == noOfQuestions - 1 {
-
                 self.submitBTN.isEnabled = true
                 self.nextQuestionBTN.setTitle("", for: [])
                 self.nextQuestionBTN.isEnabled = false

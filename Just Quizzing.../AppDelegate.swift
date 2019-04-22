@@ -13,8 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    let  APP_ID  =  "BB720C42-8B88-5B95-FF1E-929B9380A200"
-    let  API_KEY  =  "AF3511A7-9704-7C01-FF97-12BB059DC000"
+    let  APP_ID  =  "C89B83B1-7CFA-A47C-FF5E-71F82FDB8200"
+    let  API_KEY  =  "80317806-42AC-402C-FF44-96FCC88A6700"
     var  backendless  =  Backendless.sharedInstance()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
