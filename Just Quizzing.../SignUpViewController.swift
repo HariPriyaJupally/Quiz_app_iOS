@@ -72,12 +72,19 @@ class SignUpViewController: UIViewController {
         } else if(passwordTF.text! != confirmPasswordTF.text!){
             displayAlert(msg: "Password is Unmatched")
             
-        } else {
+        }
+        else if !emailIdTF.text!.contains("@") && !emailIdTF.text!.contains(".com") {
+            displayAlert(msg: "Enter a valid email id")
+        }
+        else {
+            if let mobile = Int64(mobileNumberTF.text!) {
             let userBackend = BackendlessUser()
-            userBackend.setProperties(["name": fullNameTF.text!, "email": emailIdTF.text!, "password": passwordTF.text!, "mobile": mobileNumberTF.text!])
+            userBackend.setProperties(["name": fullNameTF.text!, "email": emailIdTF.text!, "password": passwordTF.text!, "mobile": mobile])
             let user = self.backendless?.userService.register(userBackend)
             displayAfterRegistered(msg: "Registered new user")
-
+            }else{
+                displayAlert(msg: "Enter valid mobile number")
+            }
         }
     }
 }
