@@ -71,9 +71,11 @@ class QuizViewController: UIViewController {
         totalQuestionLBL.text = "\(noOfQuestions)"
         Result.shared.results = []
         if noOfQuestions == 1 {
-            self.submitBTN.isEnabled = true
+            self.submitBTN.isHidden = false
+            self.nextQuestionBTN.isHidden = true
         }else{
-            self.submitBTN.isEnabled = false
+            self.submitBTN.isHidden = true
+            self.nextQuestionBTN.isHidden = false
         }
     }
     
@@ -149,18 +151,20 @@ class QuizViewController: UIViewController {
         if option1BTN.isSelected == true || option2BTN.isSelected == true || option3BTN.isSelected == true || option4BTN.isSelected == true   {
             print(String(format: "%@ is selected. \n", option1BTN.selected()!.titleLabel!.text!));
             selectedAnswers.append(option1BTN.selected()!.titleLabel!.text!)
-            if questionNumber == noOfQuestions - 1 {
-                self.submitBTN.isEnabled = true
-                self.nextQuestionBTN.setTitle("", for: [])
-                self.nextQuestionBTN.isEnabled = false
-            }else if questionNumber < noOfQuestions - 1 {
+            if questionNumber < noOfQuestions - 1 {
                 questionNumber += 1
                 displayQuestion()
-                self.submitBTN.isEnabled = false
+                self.submitBTN.isHidden = true
+            }
+            if questionNumber == noOfQuestions - 1 {
+                self.submitBTN.isHidden = false
+                self.nextQuestionBTN.setTitle("", for: [])
+                self.nextQuestionBTN.isHidden = true
             }
         }else if option1BTN.isSelected == false {
             displayMessage()
         }
+        
     }
     
     
