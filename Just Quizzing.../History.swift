@@ -45,7 +45,7 @@ class LeaderBoard {
     static var shared = LeaderBoard()
     
     init(totalScore: Int, scoreObtained: Int){
-        historyDataStore = backendless.data.of(History.ofClass())
+        historyDataStore = Backendless.sharedInstance().data.ofTable("History")
         self.leaderboard = []
         self.username = Backendless.sharedInstance()?.userService.currentUser.getProperty("name") as! String
         self.totalScores = totalScore
@@ -63,22 +63,33 @@ class LeaderBoard {
     func saveHistory(score: Int, totalScore: Int) {
         var historyToSave = History(score: score, totalScore: totalScore)
         //print(historyDataStore.save(historyToSave))
-        backendless.data.of(History.ofClass()).save(historyToSave)
-//leaderboard.append(historyToSave)
+        let temp = backendless.data.of(History.ofClass()).save(historyToSave) as! Dictionary<String,Any>
+        historyToSave = History(score: temp["score"] as! Int, totalScore: temp["totalScore"] as! Int)
+        leaderboard.append(historyToSave)
         saveToLeaderboard(user: Backendless.sharedInstance()?.userService.currentUser.getProperty("name") as! String, leaderboard: leaderboard)
         
     }
     
     func retrieveAllQuizes() {
         let queryBuilder = DataQueryBuilder()
-        queryBuilder!.setRelated(["leaderboard"])
+        //queryBuilder!.setRelated(["leaderboard"])
         queryBuilder!.setPageSize(100)
-        Types.tryblock({() -> Void in
-            print(self.historyDataStore.find(queryBuilder))
-            self.leaderboard = self.historyDataStore.find(queryBuilder) as! [History]
-            print(self.leaderboard)
-        },
-                       catchblock: {(fault) -> Void in print(fault ?? "Something has gone wrong  reloadingAllQuizes()")})
+        let result = self.historyDataStore.find(queryBuilder)
+        print("Count")
+        print(result?.count)
+        self.leaderboard = []
+        for record in result!{
+            let temp = record as! Dictionary<String,Any>
+            let history = History(score: temp["score"] as! Int, totalScore: temp["totalScore"] as! Int)
+            self.leaderboard.append(history)
+        }
+//        Types.tryblock({() -> Void in
+//            print(self.historyDataStore.find(queryBuilder))
+//            self.leaderboard = self.historyDataStore.find(queryBuilder) as! [History]
+//            print("Count")
+//            print(self.leaderboard.count)
+//        },
+//                       catchblock: {(fault) -> Void in print(fault ?? "Something has gone wrong  reloadingAllQuizes()")})
     }
     
     func saveToLeaderboard(user: String,leaderboard: [History] ){

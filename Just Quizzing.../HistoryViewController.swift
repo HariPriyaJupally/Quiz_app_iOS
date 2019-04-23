@@ -33,6 +33,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        LeaderBoard.shared.retrieveAllQuizes()
         // Do any additional setup after loading the view, typically from a nib.
         let backgroundImage = UIImage(named: "board.jpg")
         
