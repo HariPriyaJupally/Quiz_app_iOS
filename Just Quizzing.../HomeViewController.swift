@@ -53,6 +53,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.pickerType.dataSource = self
         pickerDifficulty.tag = 1
         pickerType.tag = 2
+        LeaderBoard.shared.retrieveAllQuizes()
         pickerDifficultyContents = ["Easy", "Medium", "Hard", "Any Difficulty"]
         
         pickerTypeContents = ["Multiple Choice", "True or False", "Any Type"]

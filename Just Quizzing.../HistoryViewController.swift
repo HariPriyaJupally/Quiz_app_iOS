@@ -51,10 +51,16 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         view.addSubview(imageView)
         
         self.view.sendSubviewToBack(imageView)
-        
+        LeaderBoard.shared.retrieveAllQuizes()
     
     }
     
+    
+    
+    @IBAction func reloadBTN(_ sender: Any) {
+        LeaderBoard.shared.retrieveAllQuizes()
+        historytableView.reloadData()
+    }
     
     
 }

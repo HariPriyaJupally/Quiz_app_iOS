@@ -58,7 +58,7 @@ class SignUpViewController: UIViewController {
     func displayAfterRegistered(msg: String) {
         let  alert  =  UIAlertController(title:  "Registration Complete!",  message: msg,  preferredStyle:  .alert)
         alert.addAction(UIAlertAction(title:  "OK",  style:  .default,  handler:  { _ in
-            self.performSegue(withIdentifier: "registered", sender: nil)
+            self.performSegue(withIdentifier: "newuser", sender: nil)
         }))
         self.present(alert,  animated:  true,  completion:  nil)
     }

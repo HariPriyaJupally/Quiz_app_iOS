@@ -64,9 +64,9 @@ class LeaderBoard {
         var historyToSave = History(score: score, totalScore: totalScore)
         //print(historyDataStore.save(historyToSave))
         backendless.data.of(History.ofClass()).save(historyToSave)
-        leaderboard.append(historyToSave)
+//leaderboard.append(historyToSave)
         saveToLeaderboard(user: Backendless.sharedInstance()?.userService.currentUser.getProperty("name") as! String, leaderboard: leaderboard)
-        print(historyToSave)
+        
     }
     
     func retrieveAllQuizes() {
@@ -74,6 +74,7 @@ class LeaderBoard {
         queryBuilder!.setRelated(["leaderboard"])
         queryBuilder!.setPageSize(100)
         Types.tryblock({() -> Void in
+            print(self.historyDataStore.find(queryBuilder))
             self.leaderboard = self.historyDataStore.find(queryBuilder) as! [History]
             print(self.leaderboard)
         },

@@ -66,34 +66,18 @@ class LoginViewController: UIViewController {
         else if passwordTF.text!.isEmpty {
             display(msg: "Enter a valid password")
         }
-        else {
-            
-            Backendless.sharedInstance().userService.login(userNameTF.text!,
-                                                           password:passwordTF.text!)
+        do {
+        
+        Backendless.sharedInstance().userService.login(userNameTF.text!,
+        password:passwordTF.text!)
+        }
+        catch {
+        print("Invalid input")
         }
             
         }
         
-        
-//        Backendless.sharedInstance().userService.login(userNameTF.text!,
-//                                                       password:passwordTF.text!,
-//                                                       response: { user in
-//                                                        if user != nil {
-//                                                            if self.rememberMESwitch.isOn {
-//                                                                Backendless.sharedInstance()?.userService.setStayLoggedIn(true)
-//                                                            } else {
-//                                                                Backendless.sharedInstance()?.userService.setStayLoggedIn(false)
-//                                                            }
-//                                                            self.performSegue(withIdentifier: "login", sender: user)
-//                                                        }
-        
-//        },error: { fault in
-//            self.display(msg: (fault?.message!)!)
-//
-//        })
-    
-    
-    
+
     
     @IBAction func register(segue:UIStoryboardSegue){}
     @IBAction func cancel(segue:UIStoryboardSegue){}
