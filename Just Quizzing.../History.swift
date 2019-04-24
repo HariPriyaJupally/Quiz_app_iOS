@@ -44,16 +44,16 @@ class LeaderBoard {
     
     static var shared = LeaderBoard()
     
-    init(totalScore: Int, scoreObtained: Int){
+    init(totalScore: Int, scoreObtained: Int, username: String){
         historyDataStore = Backendless.sharedInstance().data.ofTable("History")
         self.leaderboard = []
-        self.username = Backendless.sharedInstance()?.userService.currentUser.getProperty("name") as! String
+        self.username = username
         self.totalScores = totalScore
         self.scoreObtained = scoreObtained
     }
     
     private convenience init(){
-        self.init(totalScore: 0, scoreObtained: 0)
+        self.init(totalScore: 0, scoreObtained: 0, username: "")
     }
     
     func numHistory() -> Int {
@@ -95,6 +95,7 @@ class LeaderBoard {
     func saveToLeaderboard(user: String,leaderboard: [History] ){
         var scoreObtained = 0
         var totalScores = 0
+        var currentUsername = Backendless.sharedInstance()?.userService.currentUser.getProperty("name") as! String
         for i in leaderboard {
             scoreObtained += i.score
             totalScores += i.totalScore
@@ -102,13 +103,13 @@ class LeaderBoard {
         self.scoreObtained = scoreObtained
         self.totalScores = totalScores
         if Users.shared.users.isEmpty {
-            Users.shared.users.append(LeaderBoard(totalScore: totalScores, scoreObtained: scoreObtained))
+            Users.shared.users.append(LeaderBoard(totalScore: totalScores, scoreObtained: scoreObtained, username:currentUsername))
         }else{
             for i in 0..<Users.shared.users.count {
                 if Users.shared.users[i].username.elementsEqual(user){
-                    Users.shared.users[i] = LeaderBoard( totalScore: totalScores, scoreObtained: scoreObtained)
+                    Users.shared.users[i] = LeaderBoard( totalScore: totalScores, scoreObtained: scoreObtained, username:currentUsername)
                 }else{
-                    Users.shared.users.append(LeaderBoard(totalScore: totalScores, scoreObtained: scoreObtained))
+                    Users.shared.users.append(LeaderBoard(totalScore: totalScores, scoreObtained: scoreObtained, username:currentUsername))
                 }
             }
         }

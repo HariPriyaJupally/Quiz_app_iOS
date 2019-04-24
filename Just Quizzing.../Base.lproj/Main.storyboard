@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bfu-dF-2TS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bfu-dF-2TS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -66,7 +66,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginBtn:" destination="bfu-dF-2TS" eventType="touchUpInside" id="4YA-K5-3dM"/>
-                                    <segue destination="49e-Tb-3d3" kind="show" id="nRc-Gu-aNv"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cv2-hQ-290">
@@ -129,6 +128,7 @@
                     <connections>
                         <outlet property="passwordTF" destination="b46-Sj-use" id="3W4-hz-67v"/>
                         <outlet property="userNameTF" destination="KdF-HH-pYm" id="nkQ-OH-CiN"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="login" id="2ES-41-y8b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Em-ku-UCS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1028,14 +1028,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icons8-home-page-64" width="32" height="32"/>
-        <image name="icons8-leaderboard-filled-50" width="50" height="50"/>
-        <image name="icons8-time-machine-64" width="21" height="21"/>
-        <image name="icons8-user-64" width="32" height="32"/>
+        <image name="icons8-home-page-64" width="48" height="48"/>
+        <image name="icons8-leaderboard-filled-50" width="37.5" height="37.5"/>
+        <image name="icons8-time-machine-64" width="48" height="48"/>
+        <image name="icons8-user-64" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pQz-YB-kQ6"/>
-        <segue reference="d6Q-jK-cMl"/>
+        <segue reference="2ES-41-y8b"/>
         <segue reference="RZI-xK-qkO"/>
     </inferredMetricsTieBreakers>
 </document>

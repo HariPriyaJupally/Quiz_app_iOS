@@ -12,6 +12,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userNameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var rememberMESwitch: UISwitch!
+    
+    @IBAction func register(segue:UIStoryboardSegue){}
+    @IBAction func cancel(segue:UIStoryboardSegue){}
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.jpeg")!)
@@ -66,22 +71,22 @@ class LoginViewController: UIViewController {
         else if passwordTF.text!.isEmpty {
             display(msg: "Enter a valid password")
         }
-        do {
         
-        Backendless.sharedInstance().userService.login(userNameTF.text!,
-        password:passwordTF.text!)
+        Backendless.sharedInstance()!.userService.login(
+            userNameTF.text!, password:passwordTF.text!,
+            response: { ( user : BackendlessUser!) -> () in
+                self.performSegue(withIdentifier: "login", sender: user)
+                print("User has been logged in (ASYNC): \(user)")
+        },
+            error: { ( fault : Fault!) -> () in
+                print("ErrooooR")
+                self.display(msg: "Invalid Credentials")
         }
-        catch {
-        print("Invalid input")
-        }
-            
-        }
+        )
         
-
+    }
     
-    @IBAction func register(segue:UIStoryboardSegue){}
-    @IBAction func cancel(segue:UIStoryboardSegue){}
-    
+   
 
 }
 
