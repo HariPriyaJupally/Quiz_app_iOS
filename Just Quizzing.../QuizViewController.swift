@@ -56,7 +56,7 @@ class QuizViewController: UIViewController {
     var apiURL = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        let backgroundImage = UIImage(named: "board.jpg")
+        let backgroundImage = UIImage(named: "greylights.jpg")
         var imageView: UIImageView!
         imageView = UIImageView(frame: view.bounds)
         imageView.contentMode = .scaleAspectFill

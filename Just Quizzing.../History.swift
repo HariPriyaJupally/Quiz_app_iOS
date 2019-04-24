@@ -76,7 +76,7 @@ class LeaderBoard {
         queryBuilder!.setPageSize(100)
         let result = self.historyDataStore.find(queryBuilder)
         print("Count")
-        print(result?.count)
+        print(result?.count as Any)
         self.leaderboard = []
         for record in result!{
             let temp = record as! Dictionary<String,Any>
