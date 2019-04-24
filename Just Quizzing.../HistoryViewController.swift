@@ -33,7 +33,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        LeaderBoard.shared.retrieveAllQuizes()
+        LeaderBoard.shared.retrieveCurrentUserQuizes()
         // Do any additional setup after loading the view, typically from a nib.
         let backgroundImage = UIImage(named: "board.jpg")
         
@@ -52,14 +52,14 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         view.addSubview(imageView)
         
         self.view.sendSubviewToBack(imageView)
-        LeaderBoard.shared.retrieveAllQuizes()
+        LeaderBoard.shared.retrieveCurrentUserQuizes()
     
     }
     
     
     
     @IBAction func reloadBTN(_ sender: Any) {
-        LeaderBoard.shared.retrieveAllQuizes()
+        LeaderBoard.shared.retrieveCurrentUserQuizes()
         historytableView.reloadData()
     }
     

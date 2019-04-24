@@ -14,14 +14,16 @@ class History : NSObject {
     var totalScore: Int
     
     var objectId: String?
+    var email:String
     
-    init(score: Int, totalScore: Int){
+    init(score: Int, totalScore: Int, email:String){
         self.totalScore = totalScore
         self.score = score
+        self.email = email
     }
     
     convenience override init(){
-        self.init(score: 0, totalScore: 0)
+        self.init(score: 0, totalScore: 0, email: "")
     }
     
     override var description: String
@@ -60,11 +62,11 @@ class LeaderBoard {
         return leaderboard.count
     }
     
-    func saveHistory(score: Int, totalScore: Int) {
-        var historyToSave = History(score: score, totalScore: totalScore)
+    func saveHistory(score: Int, totalScore: Int, email: String) {
+        var historyToSave = History(score: score, totalScore: totalScore, email: email)
         //print(historyDataStore.save(historyToSave))
         let temp = backendless.data.of(History.ofClass()).save(historyToSave) as! Dictionary<String,Any>
-        historyToSave = History(score: temp["score"] as! Int, totalScore: temp["totalScore"] as! Int)
+        historyToSave = History(score: temp["score"] as! Int, totalScore: temp["totalScore"] as! Int, email:temp["email"] as! String)
         leaderboard.append(historyToSave)
         saveToLeaderboard(user: Backendless.sharedInstance()?.userService.currentUser.getProperty("name") as! String, leaderboard: leaderboard)
         
@@ -80,9 +82,11 @@ class LeaderBoard {
         self.leaderboard = []
         for record in result!{
             let temp = record as! Dictionary<String,Any>
-            let history = History(score: temp["score"] as! Int, totalScore: temp["totalScore"] as! Int)
+            let history = History(score: temp["score"] as! Int, totalScore: temp["totalScore"] as! Int, email: temp["email"] as! String)
             self.leaderboard.append(history)
         }
+    
+        
 //        Types.tryblock({() -> Void in
 //            print(self.historyDataStore.find(queryBuilder))
 //            self.leaderboard = self.historyDataStore.find(queryBuilder) as! [History]
@@ -90,6 +94,22 @@ class LeaderBoard {
 //            print(self.leaderboard.count)
 //        },
 //                       catchblock: {(fault) -> Void in print(fault ?? "Something has gone wrong  reloadingAllQuizes()")})
+    }
+    func retrieveCurrentUserQuizes() {
+        let queryBuilder = DataQueryBuilder()
+        queryBuilder!.setWhereClause("email='\( Backendless.sharedInstance()!.userService.currentUser.getProperty("email") ?? "")'")
+       
+        //queryBuilder?.setSortBy(["created DESC"])
+        let result = self.historyDataStore.find(queryBuilder)
+        self.leaderboard = []
+        print("innnnnnnnn")
+        print(result?.count)
+        for record in result!{
+            let temp = record as! Dictionary<String,Any>
+            let history = History(score: temp["score"] as! Int, totalScore: temp["totalScore"] as! Int, email: temp["email"] as! String)
+            self.leaderboard.append(history)
+        }
+        
     }
     
     func saveToLeaderboard(user: String,leaderboard: [History] ){

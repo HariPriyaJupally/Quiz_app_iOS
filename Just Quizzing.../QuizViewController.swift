@@ -141,9 +141,9 @@ class QuizViewController: UIViewController {
         let quizDVC1 = segue.destination as! ResultViewController
         self.numberOfCorrectAnswers = validateAnswers()
         print(numberOfCorrectAnswers)
-        var historyToSave = History(score: numberOfCorrectAnswers, totalScore: noOfQuestions)
+        var historyToSave = History(score: numberOfCorrectAnswers, totalScore: noOfQuestions, email:Backendless.sharedInstance()?.userService.currentUser.getProperty("email") as! String)
         //Backendless.sharedInstance()!.data.of(History.ofClass()).save(historyToSave)
-        LeaderBoard.shared.saveHistory(score: numberOfCorrectAnswers, totalScore: noOfQuestions)
+        LeaderBoard.shared.saveHistory(score: numberOfCorrectAnswers, totalScore: noOfQuestions, email:Backendless.sharedInstance()?.userService.currentUser.getProperty("email") as! String)
         quizDVC1.result = numberOfCorrectAnswers
     }
     
