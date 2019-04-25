@@ -62,6 +62,8 @@ class LeaderBoard {
         return leaderboard.count
     }
     
+    //This function is used to save the history to the backendless database.
+    
     func saveHistory(score: Int, totalScore: Int, email: String) {
         var historyToSave = History(score: score, totalScore: totalScore, email: email)
         //print(historyDataStore.save(historyToSave))
@@ -71,6 +73,8 @@ class LeaderBoard {
         saveToLeaderboard(user: Backendless.sharedInstance()?.userService.currentUser.getProperty("name") as! String, leaderboard: leaderboard)
         
     }
+    
+    //This function is used to retrieve all the quizes from the backendless database.
     
     func retrieveAllQuizes() {
         let queryBuilder = DataQueryBuilder()
@@ -95,6 +99,9 @@ class LeaderBoard {
 //        },
 //                       catchblock: {(fault) -> Void in print(fault ?? "Something has gone wrong  reloadingAllQuizes()")})
     }
+    
+    //This function is used to retrieve the current user quizes.
+    
     func retrieveCurrentUserQuizes() {
         let queryBuilder = DataQueryBuilder()
         queryBuilder!.setWhereClause("email='\( Backendless.sharedInstance()!.userService.currentUser.getProperty("email") ?? "")'")
@@ -111,6 +118,8 @@ class LeaderBoard {
         }
         
     }
+    
+    //This function is used to save the data to the leaderboard.
     
     func saveToLeaderboard(user: String,leaderboard: [History] ){
         var scoreObtained = 0

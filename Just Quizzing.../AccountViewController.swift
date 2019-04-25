@@ -19,6 +19,9 @@ class AccountViewController: UIViewController {
     //@IBOutlet weak var phoneLBL: UITextField!
     
     @IBOutlet weak var phoneLBL: UILabel!
+    
+    //In this function the account details of that user are displayed.
+    
     override func viewWillAppear(_ animated: Bool) {
         usernameLBL.text = Backendless.sharedInstance()?.userService.currentUser.getProperty("name") as? String
         emailLBL.text = Backendless.sharedInstance()?.userService.currentUser.getProperty("email") as? String

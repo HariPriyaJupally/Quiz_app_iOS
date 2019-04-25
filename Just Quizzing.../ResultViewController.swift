@@ -15,6 +15,9 @@ class ResultViewController: UIViewController {
     
 
     @IBOutlet weak var scoreLBL: UILabel!
+    
+    //In this function after the view is loaded the score for that particular quiz is displayed.
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        

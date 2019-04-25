@@ -18,10 +18,14 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
+    //The leaderboard positions are displayed in this view according to the users used this application. In the text label the username of the user is displayed and in the detailed text label the position is displayed.
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "players")!
         cell.textLabel?.text = Users.shared.users[indexPath.row].username
+        //let detailText = "\(Users.shared.users[indexPath.row].scoreObtained)/\(Users.shared.users[indexPath.row].totalScores)"
         cell.detailTextLabel?.text = "\(Users.shared.users[indexPath.row].scoreObtained)/\(Users.shared.users[indexPath.row].totalScores)"
+        //cell.detailTextLabel?.text = detailText
         return cell
     }
     
@@ -46,11 +50,5 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
         view.addSubview(imageView)
         
         self.view.sendSubviewToBack(imageView)
-    
-    
-    
-    
     }
-    
-    
 }

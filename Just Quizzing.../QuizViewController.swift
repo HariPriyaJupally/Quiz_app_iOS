@@ -54,6 +54,9 @@ class QuizViewController: UIViewController {
     }
     
     var apiURL = ""
+    
+    //In this method the functionality we used is, in each view of the question only next question button is enabled and the submit button is disabled but in the last question view just the submit button is enabled and the next question button is disabled and if there is only one question then in the question view directly submit button is enabled and the next question button is disabled.
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let backgroundImage = UIImage(named: "greylights.jpg")
@@ -79,6 +82,7 @@ class QuizViewController: UIViewController {
         }
     }
     
+    //This question is used to display question in the quiz view controller screen where the user can actually take the quiz. Since we have 3 different types of questions such as multiple choice, ture or false and both(multiple choice & ture or false) it displays options accordingly. If it is a multiple choice question it displays 4 options and if it is a true or false question it displays 2 options only.
     
     func displayQuestion(){
         option2BTN.isSelected = false
@@ -109,6 +113,7 @@ class QuizViewController: UIViewController {
         currentQuestionNumLBL.text = "\(questionNumber + 1)"
     }
     
+    //This function is used to show data such as question and options.
     
     func showData(data:Data?, urlResponse:URLResponse?, error:Error?){
         var question: [String: Any]
@@ -135,7 +140,6 @@ class QuizViewController: UIViewController {
         }
     }
     
-    
     var selectedAnswers:[String] = []
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let quizDVC1 = segue.destination as! ResultViewController
@@ -146,6 +150,8 @@ class QuizViewController: UIViewController {
         LeaderBoard.shared.saveHistory(score: numberOfCorrectAnswers, totalScore: noOfQuestions, email:Backendless.sharedInstance()?.userService.currentUser.getProperty("email") as! String)
         quizDVC1.result = numberOfCorrectAnswers
     }
+    
+    //This function is for the next question button and is triggered when the user clicks the next question button after answering the question.
     
     @IBAction func nextQuestionBTN(_ sender: Any) {
         if option1BTN.isSelected == true || option2BTN.isSelected == true || option3BTN.isSelected == true || option4BTN.isSelected == true   {
@@ -167,6 +173,7 @@ class QuizViewController: UIViewController {
         
     }
     
+    //This function is used to display the alert message when the user doesn't select a option for a question.
     
     func displayMessage(){
         let alert = UIAlertController(title: "Note",

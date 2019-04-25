@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Just Quizzing...
 //
-//  Created by Shruthi  Patlolla on 2/25/19.
+//  Created by student on 2/25/19.
 //  Copyright © 2019 student. All rights reserved.
 //
 
@@ -25,12 +25,15 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         historytableView.reloadData()
     }
     
+    //The total score of each quiz of a user is displayed using this method.
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "histories")!
         cell.textLabel?.text = "Quiz \(indexPath.row+1)"
         cell.detailTextLabel?.text = "\(LeaderBoard.shared.leaderboard[indexPath.row].score)/\(LeaderBoard.shared.leaderboard[indexPath.row].totalScore)"
         return cell
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         LeaderBoard.shared.retrieveCurrentUserQuizes()

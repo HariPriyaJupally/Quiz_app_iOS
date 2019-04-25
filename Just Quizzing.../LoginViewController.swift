@@ -11,7 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
     @IBOutlet weak var userNameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
-    @IBOutlet weak var rememberMESwitch: UISwitch!
+    //@IBOutlet weak var rememberMESwitch: UISwitch!
     
     @IBAction func register(segue:UIStoryboardSegue){}
     @IBAction func cancel(segue:UIStoryboardSegue){}
@@ -43,7 +43,6 @@ class LoginViewController: UIViewController {
     
     }
     
-    
     func display(msg:String) {
         let alert = UIAlertController(title: "Alert", message: msg, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -56,10 +55,13 @@ class LoginViewController: UIViewController {
         super.touchesBegan(touches, with: event)
     }
     
+    //Checking wheather the password is alteast 8 characters long.
+    
     func isValidPassword(password:String) -> Bool{
         return password.count >= 8
     }
     
+    //This is a function for the login button. After the user clicks the login button it checks the credentials with backendless and displays the appropriate message or logs in the user for further use of the application.
     
     @IBAction func loginBtn(_ sender: Any) {
         if userNameTF.text!.isEmpty || passwordTF.text!.isEmpty {
@@ -76,18 +78,14 @@ class LoginViewController: UIViewController {
             userNameTF.text!, password:passwordTF.text!,
             response: { ( user : BackendlessUser!) -> () in
                 self.performSegue(withIdentifier: "login", sender: user)
-                print("User has been logged in (ASYNC): \(user)")
+                print("User has been logged in (ASYNC): \(String(describing: user))")
         },
             error: { ( fault : Fault!) -> () in
                 print("ErrooooR")
                 self.display(msg: "Invalid Credentials")
         }
         )
-        
     }
-    
-   
-
 }
 
 

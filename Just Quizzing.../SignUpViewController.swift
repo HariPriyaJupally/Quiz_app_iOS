@@ -50,11 +50,16 @@ class SignUpViewController: UIViewController {
         return password.count >= 8
     }
     
+    //This function is used to display alert message.
+    
     func displayAlert(msg: String){
         let  alert  =  UIAlertController(title:  "Alert",  message: msg,  preferredStyle:  .alert)
         alert.addAction(UIAlertAction(title:  "OK",  style:  .default,  handler:  nil))
         self.present(alert,  animated:  true,  completion:  nil)
     }
+    
+    //This function is used to display a message after the registration user is completed.
+    
     func displayAfterRegistered(msg: String) {
         let  alert  =  UIAlertController(title:  "Registration Complete!",  message: msg,  preferredStyle:  .alert)
         alert.addAction(UIAlertAction(title:  "OK",  style:  .default,  handler:  { _ in
@@ -62,6 +67,8 @@ class SignUpViewController: UIViewController {
         }))
         self.present(alert,  animated:  true,  completion:  nil)
     }
+    
+    //This function is used register to register a new user after the user clicks on the register button and displays appropriate message according to the users action.
     
     @IBAction func registerBTN(_ sender: Any) {
         print("in")

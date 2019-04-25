@@ -9,9 +9,6 @@
 import UIKit
 
 class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource , UITextFieldDelegate{
-     //test commit
-    
-
     
     @IBOutlet weak var NumQATF: UITextField!
     
@@ -87,6 +84,8 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
     }
     
+    //This method is to display alert message if the user does not enter a valid number
+    
     func displayMessage(){
         let alert = UIAlertController(title: "Note",
                                       message: "Please enter a valid number",
@@ -96,7 +95,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.present(alert, animated: true, completion: nil)
     }
 
-    
+    //As sson as the user clicks submit button in the Home view controller the user is taken to the Quiz view controller with the appropriate API that the user nneds to go to.
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
