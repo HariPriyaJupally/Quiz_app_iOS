@@ -9,7 +9,7 @@ import Foundation
 
 @objcMembers
 
-class History : NSObject {
+class Leadboard : NSObject {
     var score: Int
     var totalScore: Int
     
@@ -52,7 +52,6 @@ class LeaderBoard {
         self.username = username
         self.totalScores = totalScore
         self.scoreObtained = scoreObtained
-        print(username)
     }
     
     private convenience init(){
@@ -90,15 +89,15 @@ class LeaderBoard {
             let history = History(score: temp["score"] as! Int, totalScore: temp["totalScore"] as! Int, email: temp["email"] as! String)
             self.leaderboard.append(history)
         }
-    
         
-//        Types.tryblock({() -> Void in
-//            print(self.historyDataStore.find(queryBuilder))
-//            self.leaderboard = self.historyDataStore.find(queryBuilder) as! [History]
-//            print("Count")
-//            print(self.leaderboard.count)
-//        },
-//                       catchblock: {(fault) -> Void in print(fault ?? "Something has gone wrong  reloadingAllQuizes()")})
+        
+        //        Types.tryblock({() -> Void in
+        //            print(self.historyDataStore.find(queryBuilder))
+        //            self.leaderboard = self.historyDataStore.find(queryBuilder) as! [History]
+        //            print("Count")
+        //            print(self.leaderboard.count)
+        //        },
+        //                       catchblock: {(fault) -> Void in print(fault ?? "Something has gone wrong  reloadingAllQuizes()")})
     }
     
     //This function is used to retrieve the current user quizes.
@@ -106,7 +105,7 @@ class LeaderBoard {
     func retrieveCurrentUserQuizes() {
         let queryBuilder = DataQueryBuilder()
         queryBuilder!.setWhereClause("email='\( Backendless.sharedInstance()!.userService.currentUser.getProperty("email") ?? "")'")
-       
+        
         //queryBuilder?.setSortBy(["created DESC"])
         let result = self.historyDataStore.find(queryBuilder)
         self.leaderboard = []
@@ -127,7 +126,7 @@ class LeaderBoard {
     func saveToLeaderboard(user: String,leaderboard: [History] ){
         var scoreObtained = 0
         var totalScores = 0
-//        numofUsers = Backendless.sharedInstance()
+        //        numofUsers = Backendless.sharedInstance()
         
         
         
@@ -152,8 +151,24 @@ class LeaderBoard {
         }
     }
     
+    var userNames:[String] = []
     
-
+    func userNames1()->[String]{
+        for i in 0..<numUsers(){
+            //            let username = Backendless.sharedInstance()?.userService.currentUser
+            //            username?.name
+            userNames.append(Backendless.sharedInstance()?.userService.currentUser.name! as! String)
+        }
+        return userNames
+    }
+    
+    //    func specifiedUserScore()->[Int]{
+    //        for i in userNames {
+    //
+    //        }
+    //        return []
+    //    }
+    
     func numUsers() -> Int{
         return Users.shared.users.count
     }

@@ -23,9 +23,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "players")!
         cell.textLabel?.text = Users.shared.users[indexPath.row].username
-        //let detailText = "\(Users.shared.users[indexPath.row].scoreObtained)/\(Users.shared.users[indexPath.row].totalScores)"
         cell.detailTextLabel?.text = "\(Users.shared.users[indexPath.row].scoreObtained)/\(Users.shared.users[indexPath.row].totalScores)"
-        //cell.detailTextLabel?.text = detailText
         return cell
     }
     
@@ -33,7 +31,7 @@ class LeaderboardViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let backgroundImage = UIImage(named: "board.jpg")
+        let backgroundImage = UIImage(named: "greylights.jpg")
         
         var imageView: UIImageView!
         

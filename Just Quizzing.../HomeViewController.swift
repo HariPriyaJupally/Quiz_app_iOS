@@ -70,7 +70,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 1{
-        return pickerDifficultyContents.count
+            return pickerDifficultyContents.count
         }else{
             return pickerTypeContents.count
         }
@@ -78,7 +78,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == 1{
-        return pickerDifficultyContents[row]
+            return pickerDifficultyContents[row]
         }else{
             return pickerTypeContents[row]
         }
@@ -89,19 +89,22 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     func displayMessage(){
         let alert = UIAlertController(title: "Note",
                                       message: "Please enter a valid number",
-            preferredStyle: .alert)
+                                      preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default,
                                       handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-
+    
     //As sson as the user clicks submit button in the Home view controller the user is taken to the Quiz view controller with the appropriate API that the user nneds to go to.
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let number = Int(NumQATF.text!){
             self.questions = number
-            if pickerDifficultyContents[pickerDifficulty.selectedRow(inComponent: 0)] == "Any Difficulty" && pickerTypeContents[pickerType.selectedRow(inComponent: 0)] == "Any Type" {
+            if questions! <= 0{
+                displayMessage()
+                return;
+            }else if pickerDifficultyContents[pickerDifficulty.selectedRow(inComponent: 0)] == "Any Difficulty" && pickerTypeContents[pickerType.selectedRow(inComponent: 0)] == "Any Type" {
                 apiURL = "https://opentdb.com/api.php?amount=\(NumQATF.text!)&category=18"
             }else if pickerDifficultyContents[pickerDifficulty.selectedRow(inComponent: 0)] == "Any Difficulty" && pickerTypeContents[pickerType.selectedRow(inComponent: 0)] != "Any Type" {
                 apiURL = "https://opentdb.com/api.php?amount=\(NumQATF.text!)&category=18&type=\(String(describing: Q_Type(rawValue: pickerTypeContents[pickerType.selectedRow(inComponent: 0)])!))"
@@ -116,6 +119,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             quizDVC.noOfQuestions = questions!
             quizDVC.apiURL = self.apiURL
             print(quizDVC.apiURL)
+                
         }else {
             displayMessage()
         }

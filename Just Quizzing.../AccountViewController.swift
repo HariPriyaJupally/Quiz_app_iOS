@@ -39,7 +39,7 @@ class AccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let backgroundImage = UIImage(named: "board.jpg")
+        let backgroundImage = UIImage(named: "greylights.jpg")
         
         var imageView: UIImageView!
         

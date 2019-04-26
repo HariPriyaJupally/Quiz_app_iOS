@@ -9,7 +9,7 @@
 import UIKit
 
 class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+    var timer = Timer()
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return LeaderBoard.shared.leaderboard.count
@@ -38,7 +38,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         LeaderBoard.shared.retrieveCurrentUserQuizes()
         // Do any additional setup after loading the view, typically from a nib.
-        let backgroundImage = UIImage(named: "board.jpg")
+        let backgroundImage = UIImage(named: "greylights.jpg")
         
         var imageView: UIImageView!
         
@@ -56,15 +56,9 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         
         self.view.sendSubviewToBack(imageView)
         LeaderBoard.shared.retrieveCurrentUserQuizes()
+        
+        
     
     }
-    
-    
-    
-    @IBAction func reloadBTN(_ sender: Any) {
-        LeaderBoard.shared.retrieveCurrentUserQuizes()
-        historytableView.reloadData()
-    }
-    
     
 }

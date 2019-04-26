@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.jpeg")!)
         // Do any additional setup after loading the view.
         
-        let backgroundImage = UIImage(named: "board.jpg")
+        let backgroundImage = UIImage(named: "greylights.jpg")
         
         var imageView: UIImageView!
         

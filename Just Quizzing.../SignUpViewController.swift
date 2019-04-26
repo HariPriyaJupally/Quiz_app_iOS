@@ -23,7 +23,7 @@ class SignUpViewController: UIViewController {
         // self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg.jpeg")!)
         // Do any additional setup after loading the view.
        
-        let backgroundImage = UIImage(named: "board.jpg")
+        let backgroundImage = UIImage(named: "greylights.jpg")
         
         var imageView: UIImageView!
         
@@ -87,7 +87,7 @@ class SignUpViewController: UIViewController {
             if let mobile = Int64(mobileNumberTF.text!) {
             let userBackend = BackendlessUser()
             userBackend.setProperties(["name": fullNameTF.text!, "email": emailIdTF.text!, "password": passwordTF.text!, "mobile": mobile])
-            let user = self.backendless?.userService.register(userBackend)
+                _ = self.backendless?.userService.register(userBackend)
             displayAfterRegistered(msg: "Registered new user")
             }else{
                 displayAlert(msg: "Enter valid mobile number")
